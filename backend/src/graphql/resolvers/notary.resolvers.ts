@@ -1,6 +1,6 @@
 export const notaryResolvers = {
     Query: {
-        findAllNotaries: async () => {}
+        findAllNotaries: async () => {},
     },
 
     Mutation: {

@@ -43,6 +43,18 @@
 
     // coder inputs
     "moduleResolution": "nodenext",
-    "allowJs": true
+    "allowJs": true,
+    "baseUrl": "./",
+    "paths": {
+      "@prisma/*": ["./prisma/*"],
+      "@controllers/*": ["./src/services/*"],
+      "@graphql/*": ["./src/graphql/*"],
+      "@infra/*": ["./src/infra/*"],
+      "@repositories/*": ["./src/repositories/*"],
+      "@services/*": ["./src/services/*"],
+      "@test/cases/*": ["./test/cases/*"],
+      "@test/infra/*": ["./test/infra/*"],
+      "@test/mocks/*": ["./test/mocks/*"]
+    }
   }
 }
