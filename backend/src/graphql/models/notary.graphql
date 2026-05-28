@@ -1,0 +1,26 @@
+enum NotaryStatus {
+    PENDING,
+    IN_PROGRESS,
+    COMPLETED
+}
+
+enum NotaryType {
+    BIRTH_CERTIFICATE,
+    SIGNATURE_AUTHENTICATION,
+    DOCUMENT_AUTHENTICATION,
+    DEED,
+    OTHER
+}
+
+type Notary {
+    id: ID
+    applicant: String!
+    cpf: String!
+    description: String!
+    requestDate: String! # this is a dete time
+    remarks: String
+    notaryStatus: NotaryStatus!
+    notaryType: NotaryType!
+    createdAt: String # this is a date time
+    updatedAt: String # this is a date time
+}

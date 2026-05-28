@@ -4,7 +4,7 @@
 // biome-ignore-all lint: generated file
 // @ts-nocheck 
 /*
- * This is a barrel export file for all models and their related types.
+ * This is a barrel export file for all models and their related models.
  *
  * 🟢 You can import this file directly.
  */

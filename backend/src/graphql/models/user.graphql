@@ -1,0 +1,14 @@
+enum UserRole {
+    ADMINISTRATOR,
+    ATTENDANT
+}
+
+type User {
+    id: ID
+    name: String!
+    email: String!
+    password: String!
+    profile: UserRole!
+    createdAt: String # this is a date time
+    updatedAt: String # this is a date time
+}

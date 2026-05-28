@@ -282,7 +282,7 @@ type _Record<K extends keyof any, T> = {
   [P in K]: T;
 };
 
-// cause typescript not to expand types and preserve names
+// cause typescript not to expand models and preserve names
 type NoExpand<T> = T extends unknown ? T : never;
 
 // this type assumes the passed object is entirely optional
