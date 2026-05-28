@@ -1,4 +1,6 @@
-import { faker } from "@faker-js/faker";
+import Chance from "chance";
+
+const chance = new Chance();
 
 type ProfileType = "ADMINISTRATOR" | "ATTENDANT";
 
@@ -14,10 +16,10 @@ export type UserMocked = {
 
 export function makeUserMocked(overrides = {}): UserMocked {
     return {
-        name: faker.person.fullName(),
-        email: faker.internet.email(),
-        password: faker.internet.password(),
-        profile: faker.helpers.arrayElement<ProfileType>(["ADMINISTRATOR", "ATTENDANT"]),
+        name: chance.name(),
+        email: chance.email(),
+        password: chance.string({ alpha: true, numeric: true, length: 12 }),
+        profile: chance.pickone<ProfileType>(["ADMINISTRATOR", "ATTENDANT"]),
         ...overrides,
     };
 }

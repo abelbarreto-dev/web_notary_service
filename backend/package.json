@@ -18,23 +18,31 @@
   "type": "commonjs",
   "main": "index.js",
   "scripts": {
-    "pretest": "npm run prisma:test:reset",
-    "test": "dotenv -e .env.test -- jest",
+    "test": "jest",
     "prisma:migrate": "prisma migrate dev",
     "prisma:test": "dotenv -e .env.test -- prisma migrate deploy",
-    "prisma:test:reset": "dotenv -e .env.test -- prisma migrate reset --force"
+    "prisma:test:reset": "dotenv -e .env.test -- prisma migrate reset --force",
+    "format": "prettier --write \"{src,test}/**/*.{ts,tsx,js,jsx,json,css,md}\"",
+    "format:check": "prettier --check \"{src,test}/**/*.{ts,tsx,js,jsx,json,css,md}\""
   },
   "devDependencies": {
-    "@faker-js/faker": "^10.4.0",
+    "@jest/globals": "^30.4.1",
     "@prisma/client": "^7.8.0",
     "@prisma/dev": "^0.24.8",
+    "@types/chance": "^1.1.8",
     "@types/jest": "^30.0.0",
+    "@types/node": "^25.9.1",
+    "chance": "^1.1.13",
     "dotenv-cli": "^11.0.0",
+    "esbuild-register": "^3.6.0",
+    "jest": "^30.4.2",
+    "prettier": "^3.8.3",
     "prisma": "^7.8.0",
     "ts-jest": "^29.4.11",
     "ts-node": "^10.9.2"
   },
   "dependencies": {
+    "@prisma/adapter-pg": "^7.8.0",
     "axios": "^1.16.1",
     "typescript": "^6.0.3"
   }

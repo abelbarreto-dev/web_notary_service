@@ -1,36 +1,48 @@
-import {faker} from "@faker-js/faker";
+import Chance from "chance";
+import { generateCPF } from "../../src/utils/cpfUtil";
+
+const chance = new Chance();
 
 type NotaryStatus = "PENDING" | "IN_PROGRESS" | "COMPLETED";
 
-type NotaryType = "BIRTH_CERTIFICATE" | "SIGNATURE_AUTHENTICATION" | "DOCUMENT_AUTHENTICATION" | "DEED" | "OTHER";
+type NotaryType =
+    | "BIRTH_CERTIFICATE"
+    | "SIGNATURE_AUTHENTICATION"
+    | "DOCUMENT_AUTHENTICATION"
+    | "DEED"
+    | "OTHER";
 
 export type NotaryMocked = {
     id?: string;
-    name: string,
-    cpf: string,
+    applicant: string;
+    cpf: string;
     description: string;
     requestDate: Date;
-    remarks?: string;
+    remarks?: string | null;
     notaryStatus: NotaryStatus;
     notaryType: NotaryType;
     createdAt?: Date;
     updatedAt?: Date;
-}
+};
 
 export function makeNotaryMocked(override: {}): NotaryMocked {
     return {
-        name: faker.person.fullName(),
-        cpf: faker.string.numeric({length: 11}),
-        description: faker.lorem.text(),
+        applicant: chance.name(),
+        cpf: generateCPF(),
+        description: chance.paragraph().substring(0, 255),
         requestDate: new Date(),
-        remarks: faker.number.int() % 2 == 0 ? faker.lorem.sentence() : undefined,
-        notaryStatus: faker.helpers.arrayElement<NotaryStatus>(["PENDING", "IN_PROGRESS", "COMPLETED"]),
-        notaryType: faker.helpers.arrayElement<NotaryType>([
+        remarks: chance.bool() ? chance.sentence({ words: 10 }) : undefined,
+        notaryStatus: chance.pickone<NotaryStatus>([
+            "PENDING",
+            "IN_PROGRESS",
+            "COMPLETED",
+        ]),
+        notaryType: chance.pickone<NotaryType>([
             "BIRTH_CERTIFICATE",
             "SIGNATURE_AUTHENTICATION",
             "DOCUMENT_AUTHENTICATION",
             "DEED",
-            "OTHER"
+            "OTHER",
         ]),
         ...override,
     };

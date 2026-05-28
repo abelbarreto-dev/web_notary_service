@@ -1,16 +1,18 @@
-import {faker} from "@faker-js/faker";
+import Chance from "chance";
+
+const chance = new Chance();
 
 function calculateDigit(bodyCpf: string): string {
     const length = bodyCpf.length;
 
-    const arrayNumbers = Array.from(bodyCpf).map(x => Number(x));
+    const arrayNumbers = Array.from(bodyCpf).map((x) => Number(x));
 
     let times = length + 1;
     let digit = 0;
 
     for (let i = 0; i < length; i++) {
         digit += arrayNumbers[i] * times;
-        times --;
+        times--;
     }
 
     const remainder = digit % 11;
@@ -34,7 +36,7 @@ export function validatorCPF(cpf: string): boolean {
 }
 
 export function generateCPF(): string {
-    let bodyCpf = faker.string.numeric({ length: 9});
+    let bodyCpf = chance.string({ numeric: true, length: 9 });
 
     bodyCpf = calculateDigit(bodyCpf);
     bodyCpf = calculateDigit(bodyCpf);
@@ -44,7 +46,7 @@ export function generateCPF(): string {
 
 export function generateInvalidCPF(): string {
     while (true) {
-        const cpf = faker.string.numeric({ length: 11});
+        const cpf = chance.string({ numeric: true, length: 11 });
 
         if (!validatorCPF(cpf)) return cpf;
     }
