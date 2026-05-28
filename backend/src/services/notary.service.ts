@@ -1,5 +1,6 @@
 import { NotaryRepository } from "@repositories/notary.repository";
 import { PrismaClient } from "../../prisma/client/client";
+import { NotaryId, NotaryInput } from "@infra/notary.models";
 
 export class NotaryService {
     private notaryRepository: NotaryRepository;
@@ -8,11 +9,11 @@ export class NotaryService {
         this.notaryRepository = new NotaryRepository(prismaClient);
     }
 
-    async createNotary() {}
+    async createNotary(notary: NotaryInput) {}
 
     async findAllNotaries() {}
 
-    async updateNotary() {}
+    async updateNotary(notary: NotaryInput) {}
 
-    async deleteNotary() {}
+    async deleteNotary(notaryId: NotaryId) {}
 }

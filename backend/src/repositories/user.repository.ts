@@ -1,4 +1,5 @@
 import { PrismaClient } from "../../prisma/client/client";
+import { UserId, UserInput, UserLogin } from "@infra/user.models";
 
 export class UserRepository {
     private prisma: PrismaClient;
@@ -7,13 +8,13 @@ export class UserRepository {
         this.prisma = prismaClient;
     }
 
-    async createUser() {}
+    async createUser(user: UserInput) {}
 
     async findAllUsers() {}
 
-    async updateUser() {}
+    async updateUser(user: UserInput) {}
 
-    async deleteUser() {}
+    async deleteUser(user: UserId) {}
 
-    async singInUser() {}
+    async singInUser(user: UserLogin) {}
 }

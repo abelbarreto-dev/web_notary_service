@@ -1,4 +1,5 @@
 import { PrismaClient } from "../../prisma/client/client";
+import { NotaryId, NotaryInput } from "@infra/notary.models";
 
 export class NotaryRepository {
     private prisma: PrismaClient;
@@ -7,11 +8,11 @@ export class NotaryRepository {
         this.prisma = prismaClient;
     }
 
-    async createNotary() {}
+    async createNotary(notary: NotaryInput) {}
 
     async findAllNotaries() {}
 
-    async updateNotary() {}
+    async updateNotary(notary: NotaryInput) {}
 
-    async deleteNotary() {}
+    async deleteNotary(notaryId: NotaryId) {}
 }
