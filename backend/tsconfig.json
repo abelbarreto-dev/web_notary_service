@@ -44,11 +44,9 @@
     // coder inputs
     "moduleResolution": "nodenext",
     "allowJs": true,
-    "baseUrl": "./",
     "paths": {
-      "@prisma/*": ["./prisma/*"],
       "@controllers/*": ["./src/services/*"],
-      "@graphql/*": ["./src/graphql/*"],
+      "@graphql-pkg/*": ["./src/graphql/*"],
       "@infra/*": ["./src/infra/*"],
       "@repositories/*": ["./src/repositories/*"],
       "@services/*": ["./src/services/*"],

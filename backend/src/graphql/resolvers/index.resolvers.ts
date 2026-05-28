@@ -2,7 +2,7 @@ import { DateTimeResolver } from "graphql-scalars";
 import { notaryResolvers } from "./notary.resolvers";
 import { userResolvers } from "./user.resolvers";
 
-export const resolvers = {
+export const mainResolvers = {
     DateTime: DateTimeResolver,
 
     Query: {

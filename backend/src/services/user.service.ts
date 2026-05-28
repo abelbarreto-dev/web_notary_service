@@ -1,5 +1,5 @@
-import { PrismaClient } from "@prisma/client/client";
 import { UserRepository } from "@repositories/user.repository";
+import { PrismaClient } from "../../prisma/client/client";
 
 export class UserService {
     private userRepository: UserRepository;

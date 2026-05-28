@@ -1,4 +1,4 @@
-import { PrismaClient } from "@prisma/client/client";
+import { PrismaClient } from "../../prisma/client/client";
 
 export class NotaryRepository {
     private prisma: PrismaClient;

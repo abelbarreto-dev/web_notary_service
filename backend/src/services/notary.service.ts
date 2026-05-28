@@ -1,5 +1,5 @@
 import { NotaryRepository } from "@repositories/notary.repository";
-import { PrismaClient } from "@prisma/client/client";
+import { PrismaClient } from "../../prisma/client/client";
 
 export class NotaryService {
     private notaryRepository: NotaryRepository;

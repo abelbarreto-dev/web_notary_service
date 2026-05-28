@@ -1,5 +1,5 @@
-import { PrismaClient } from "@prisma/client/client";
 import { UserService } from "@services/user.service";
+import { PrismaClient } from "../../prisma/client/client";
 
 export class UserController {
     private userService: UserService;

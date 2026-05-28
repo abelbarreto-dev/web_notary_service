@@ -1,5 +1,5 @@
-import { PrismaClient } from "@prisma/client/client";
 import { NotaryService } from "@services/notary.service";
+import { PrismaClient } from "../../prisma/client/client";
 
 export class NotaryController {
     private notaryService: NotaryService;
