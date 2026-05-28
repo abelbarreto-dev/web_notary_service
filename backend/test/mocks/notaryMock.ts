@@ -13,12 +13,11 @@ export type NotaryMocked = {
     remarks?: string;
     notaryStatus: NotaryStatus;
     notaryType: NotaryType;
-    userId: string;
     createdAt?: Date;
     updatedAt?: Date;
 }
 
-export function makeNotaryMocked(userId: string, override: {}): NotaryMocked {
+export function makeNotaryMocked(override: {}): NotaryMocked {
     return {
         name: faker.person.fullName(),
         cpf: faker.string.numeric({length: 11}),
@@ -33,7 +32,6 @@ export function makeNotaryMocked(userId: string, override: {}): NotaryMocked {
             "DEED",
             "OTHER"
         ]),
-        userId: userId,
         ...override,
     };
 }

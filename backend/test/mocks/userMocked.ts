@@ -1,5 +1,4 @@
-import { faker } from '@faker-js/faker';
-import {NotaryMock} from "./notaryMock";
+import { faker } from "@faker-js/faker";
 
 type ProfileType = "ADMINISTRATOR" | "ATTENDANT";
 
