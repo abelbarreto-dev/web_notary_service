@@ -7,8 +7,8 @@ import { mergeTypeDefs } from "@graphql-tools/merge";
 import path from "node:path";
 
 const typesArray = loadFilesSync(
-    path.join(__dirname, "../graphql/models/**/*.graphql")
-)
+    path.join(__dirname, "../graphql/models/**/*.graphql"),
+);
 
 const typeDefs = mergeTypeDefs(typesArray);
 
@@ -23,7 +23,7 @@ export async function startServerGraphQL(prismaClient: PrismaClient) {
     const { url } = await startStandaloneServer(server, {
         listen: { port: 4000 },
         context: async () => {
-            return {prisma: prismaClient}
+            return { prisma: prismaClient };
         },
     });
 
