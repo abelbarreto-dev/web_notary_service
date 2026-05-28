@@ -1,0 +1,38 @@
+{
+  "name": "web_notary_service",
+  "version": "1.0.0",
+  "description": "A service to registry notes about contracts and mode.",
+  "keywords": [
+    "notary"
+  ],
+  "homepage": "https://github.com/abelbarreto-dev/web_notary_service#readme",
+  "bugs": {
+    "url": "https://github.com/abelbarreto-dev/web_notary_service/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/abelbarreto-dev/web_notary_service.git"
+  },
+  "license": "MIT",
+  "author": "abelbarreto-dev",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "pretest": "npm run prisma:test:reset",
+    "test": "dotenv -e .env.test -- jest",
+    "prisma:migrate": "prisma migrate dev",
+    "prisma:test": "dotenv -e .env.test -- prisma migrate deploy",
+    "prisma:test:reset": "dotenv -e .env.test -- prisma migrate reset --force"
+  },
+  "devDependencies": {
+    "@prisma/client": "^7.8.0",
+    "@prisma/dev": "^0.24.8",
+    "@types/jest": "^30.0.0",
+    "dotenv-cli": "^11.0.0",
+    "prisma": "^7.8.0",
+    "ts-node": "^10.9.2"
+  },
+  "dependencies": {
+    "typescript": "^6.0.3"
+  }
+}
