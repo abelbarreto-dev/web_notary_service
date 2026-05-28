@@ -10,6 +10,7 @@ This project is a part of a Software Engineer challenge.
 * [Docker Settings](#docker-settings)
   * [Setting Docker](#setting-docker)
   * [Running Docker](#running-docker)
+* [Migrations](#migrations)
 * [Notes](#notes)
 
 ### Dependencies
@@ -90,6 +91,23 @@ To stop the running, please type:
 ```commandline
 docker compose down
 ```
+
+### Migrations
+This project uses the library Prisma as ORM. At [backend/package.json](backend/package.json) you find the key scripts.
+
+But if you want to configure that project, you need to run the migrations, this project has a normal and a test environment.
+
+To run the migrations to the production database, please:
+```commandlien
+npm run prisma:migrate
+```
+
+After run the same migration to the test database:
+```commandline
+npm run prisma:test
+```
+
+**Note: to run the migrations to the test database, you've need to run the migrations to the production mode.**
 
 ### Notes
 * The script [gitter.py](gitter.py) is used to make GIT operations.
