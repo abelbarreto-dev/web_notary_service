@@ -25,14 +25,17 @@
     "prisma:test:reset": "dotenv -e .env.test -- prisma migrate reset --force"
   },
   "devDependencies": {
+    "@faker-js/faker": "^10.4.0",
     "@prisma/client": "^7.8.0",
     "@prisma/dev": "^0.24.8",
     "@types/jest": "^30.0.0",
     "dotenv-cli": "^11.0.0",
     "prisma": "^7.8.0",
+    "ts-jest": "^29.4.11",
     "ts-node": "^10.9.2"
   },
   "dependencies": {
+    "axios": "^1.16.1",
     "typescript": "^6.0.3"
   }
 }
