@@ -12,15 +12,39 @@ enum NotaryType {
     OTHER
 }
 
-type Notary {
-    id: ID
+input NotaryInput {
     applicant: String!
     cpf: String!
     description: String!
-    requestDate: String! # this is a dete time
+    requestDate: DateTime!
     remarks: String
     notaryStatus: NotaryStatus!
     notaryType: NotaryType!
-    createdAt: String # this is a date time
-    updatedAt: String # this is a date time
+}
+
+input NotaryId {
+    id: String
+}
+
+type Notary {
+    id: ID!
+    applicant: String!
+    cpf: String!
+    description: String!
+    requestDate: DateTime!
+    remarks: String
+    notaryStatus: NotaryStatus!
+    notaryType: NotaryType!
+    createdAt: DateTime!
+    updatedAt: DateTime
+}
+
+extend type Query {
+    findAllNotaries: [Notary!]!
+}
+
+extend type Mutation {
+    createNotary(notary: NotaryInput): User,
+    updateNotary(notary: NotaryInput): User,
+    deleteNotary(notary: NotaryId): User,
 }

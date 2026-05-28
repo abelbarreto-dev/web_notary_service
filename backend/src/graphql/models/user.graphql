@@ -3,12 +3,38 @@ enum UserRole {
     ATTENDANT
 }
 
-type User {
-    id: ID
+input UserInput {
     name: String!
     email: String!
     password: String!
     profile: UserRole!
-    createdAt: String # this is a date time
-    updatedAt: String # this is a date time
+}
+
+input UserLogin {
+    email: String!
+    password: String!
+}
+
+input UserId {
+    id: String!
+}
+
+type User {
+    id: ID!
+    name: String!
+    email: String!
+    profile: UserRole!
+    createdAt: DateTime!
+    updatedAt: DateTime
+}
+
+extend type Query {
+    findAllUsers: [User!]!
+}
+
+extend type Mutation {
+    createUser(user: UserInput): User,
+    updateUser(user: UserInput): User,
+    deleteUser(user: UserId): User,
+    singInUser(user: UserLogin): User,
 }
