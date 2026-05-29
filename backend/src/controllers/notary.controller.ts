@@ -1,6 +1,7 @@
 import { NotaryService } from "@services/notary.service";
 import { PrismaClient } from "../../prisma/client/client";
 import { NotaryId, NotaryInput } from "@infra/notary.models";
+import { notaryResponseFactory } from "../utils/factories/notary.response.factory";
 
 export class NotaryController {
     private notaryService: NotaryService;
@@ -9,11 +10,25 @@ export class NotaryController {
         this.notaryService = new NotaryService(prismaClient);
     }
 
-    async createNotary(notary: NotaryInput) {}
+    async createNotary(notary: NotaryInput) {
+        const notaryDB = await this.notaryService.createNotary(notary);
 
-    async findAllNotaries() {}
+        return await notaryResponseFactory(notaryDB);
+    }
 
-    async updateNotary(notary: NotaryInput) {}
+    async findAllNotaries() {
+        return await this.notaryService.findAllNotaries();
+    }
 
-    async deleteNotary(notaryId: NotaryId) {}
+    async updateNotary(notary: NotaryInput) {
+        const notaryDB = await this.notaryService.updateNotary(notary);
+
+        return await notaryResponseFactory(notaryDB);
+    }
+
+    async deleteNotary(notaryId: NotaryId) {
+        const notaryDB = await this.notaryService.deleteNotary(notaryId);
+
+        return await notaryResponseFactory(notaryDB);
+    }
 }

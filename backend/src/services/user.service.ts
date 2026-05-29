@@ -1,5 +1,5 @@
 import { UserRepository } from "@repositories/user.repository";
-import { PrismaClient } from "../../prisma/client/client";
+import { PrismaClient, User } from "../../prisma/client/client";
 import { UserId, UserInput, UserLogin } from "@infra/user.models";
 
 export class UserService {
@@ -9,13 +9,13 @@ export class UserService {
         this.userRepository = new UserRepository(prismaClient);
     }
 
-    async createUser(user: UserInput) {}
+    async createUser(user: UserInput): Promise<User> {}
 
-    async findAllUsers() {}
+    async findAllUsers(): Promise<User[]> {}
 
-    async updateUser(user: UserInput) {}
+    async updateUser(user: UserInput): Promise<User> {}
 
-    async deleteUser(user: UserId) {}
+    async deleteUser(user: UserId): Promise<User> {}
 
-    async singInUser(user: UserLogin) {}
+    async singInUser(user: UserLogin): Promise<User> {}
 }
