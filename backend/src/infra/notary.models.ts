@@ -1,6 +1,7 @@
 import { NotaryStatus, NotaryType } from "./enums";
 
 export interface NotaryInput {
+    id?: string;
     applicant: string;
     cpf: string;
     description: string;

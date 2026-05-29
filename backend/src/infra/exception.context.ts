@@ -7,7 +7,7 @@ export type ExceptionType = {
 };
 
 export abstract class ExceptionContext extends Error {
-    private readonly _code: number;
+    private _code: number;
 
     protected constructor(props: ExceptionType) {
         super(props.message || "Exception Context: Message");
@@ -19,5 +19,9 @@ export abstract class ExceptionContext extends Error {
 
     get code(): number {
         return this._code;
+    }
+
+    set code(code: number) {
+        this._code = code;
     }
 }
