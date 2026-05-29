@@ -2,6 +2,9 @@ import { NotaryStatus, NotaryType } from "@infra/enums";
 import { ExceptionType } from "@infra/exception.context";
 import { regex } from "@infra/regex.context";
 import { NotaryException } from "@exception/notary.exception";
+import { NotaryId } from "@infra/notary.models";
+import { validateUUID } from "../general/uuid.util";
+import { UserException } from "@exception/user.exception";
 
 type NotaryValidator = {
     applicant?: string;
@@ -83,11 +86,21 @@ function notaryTypeTesting(notaryType?: NotaryType) {
     }
 }
 
-export function notaryTesting(notary?: NotaryValidator) {
+export async function validateNotaryCreateOrUpdate(notary?: NotaryValidator) {
     applicantTesting(notary?.applicant);
     cpfTesting(notary?.cpf);
     descriptionTesting(notary?.description);
     remarksTesting(notary?.remarks);
     notaryStatusTesting(notary?.notaryStatus);
     notaryTypeTesting(notary?.notaryType);
+}
+
+export async function validateNotaryId(notaryId: NotaryId) {
+    if (!validateUUID(notaryId.id)) {
+        propsException.message = "invalid notary id format";
+        propsException.cause =
+            "the notary id does not match to the regex expression";
+        propsException.stack = "notary.id";
+        throw new UserException(propsException);
+    }
 }

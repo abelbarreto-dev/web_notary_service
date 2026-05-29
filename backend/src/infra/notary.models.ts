@@ -11,7 +11,7 @@ export interface NotaryInput {
 }
 
 export interface NotaryId {
-    id?: string;
+    id: string;
 }
 
 export interface Notary {

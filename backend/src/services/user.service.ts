@@ -1,6 +1,13 @@
 import { UserRepository } from "@repositories/user.repository";
 import { PrismaClient, User } from "../../prisma/client/client";
 import { UserId, UserInput, UserLogin } from "@infra/user.models";
+import {
+    validateUserCreateOrUpdate,
+    validateUserId,
+    validateUserLogin,
+    validateUserPassword,
+} from "../utils/validators/user.validator";
+import { encryptPassword } from "../utils/general/password.util";
 
 export class UserService {
     private userRepository: UserRepository;
@@ -9,13 +16,42 @@ export class UserService {
         this.userRepository = new UserRepository(prismaClient);
     }
 
-    async createUser(user: UserInput): Promise<User> {}
+    async createUser(user: UserInput): Promise<User> {
+        await validateUserCreateOrUpdate(user);
 
-    async findAllUsers(): Promise<User[]> {}
+        const password = await encryptPassword(user.password);
 
-    async updateUser(user: UserInput): Promise<User> {}
+        const userData: UserInput = {
+            ...user,
+            password,
+        };
 
-    async deleteUser(user: UserId): Promise<User> {}
+        return await this.userRepository.createUser(userData);
+    }
 
-    async singInUser(user: UserLogin): Promise<User> {}
+    async findAllUsers(): Promise<User[]> {
+        return await this.userRepository.findAllUsers();
+    }
+
+    async updateUser(user: UserInput): Promise<User> {
+        await validateUserCreateOrUpdate(user);
+
+        return await this.userRepository.updateUser(user);
+    }
+
+    async deleteUser(user: UserId): Promise<User> {
+        await validateUserId(user);
+
+        return await this.userRepository.deleteUser(user);
+    }
+
+    async singInUser(user: UserLogin): Promise<User> {
+        await validateUserLogin(user);
+
+        const userDB: User = await this.userRepository.singInUser(user);
+
+        await validateUserPassword(user.password, userDB.password);
+
+        return userDB;
+    }
 }
