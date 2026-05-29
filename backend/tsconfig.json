@@ -46,6 +46,7 @@
     "allowJs": true,
     "paths": {
       "@controllers/*": ["./src/services/*"],
+      "@exception/*": ["./src/exceptions/*"],
       "@graphql-pkg/*": ["./src/graphql/*"],
       "@infra/*": ["./src/infra/*"],
       "@repositories/*": ["./src/repositories/*"],

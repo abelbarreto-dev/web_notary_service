@@ -33,7 +33,9 @@ def main() -> None:
 
         print("8. Make a Pull")
 
-        print("9. Log Out!")
+        print("9. Make a Amend")
+
+        print("10. Log Out!")
 
         line()
 
@@ -46,10 +48,10 @@ def main() -> None:
 
         choice = int(option)
 
-        if choice > 9 or choice < 1:
+        if choice > 10 or choice < 1:
             continue
 
-        if choice == 9:
+        if choice == 10:
             print("Thank you for using Gitter! See you later!")
             line()
             break
@@ -62,6 +64,7 @@ def main() -> None:
             6: add_all_files,
             7: see_status,
             8: make_a_pull,
+            9: make_a_amend,
         }.get(choice, None)
 
         if function is None:
@@ -96,6 +99,7 @@ def make_a_commit() -> None:
     print("7. Exception")
     print("8. Fix")
     print("9. HotFix")
+    print("10. Testing")
 
     line()
     option = input("What would you like to do? ")
@@ -119,6 +123,7 @@ def make_a_commit() -> None:
         7: "except: ",
         8: "fix: ",
         9: "hotfix: ",
+        10: "test: ",
     }.get(option)
 
     message = input("Commit Message: ").strip().lower()
@@ -168,6 +173,14 @@ def make_a_pull() -> None:
     line()
 
     command = "git pull"
+
+    system(command)
+
+
+def make_a_amend() -> None:
+    line()
+
+    command = "git commit --amend"
 
     system(command)
 
