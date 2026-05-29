@@ -1,5 +1,5 @@
 import Chance from "chance";
-import { generateCPF } from "../../src/utils/cpfUtil";
+import { generateCPF } from "../../src/utils/general/cpf.util";
 
 const chance = new Chance();
 

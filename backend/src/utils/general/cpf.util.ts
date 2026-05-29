@@ -1,4 +1,5 @@
 import Chance from "chance";
+import { regex } from "@infra/regex.context";
 
 const chance = new Chance();
 
@@ -23,9 +24,7 @@ function calculateDigit(bodyCpf: string): string {
 }
 
 export function validatorCPF(cpf: string): boolean {
-    const cpfRegex = new RegExp(/^[0-9]{11}$/);
-
-    if (!cpfRegex.test(cpf)) return false;
+    if (!regex.cpf(cpf)) return false;
 
     let cpfTest = cpf.slice(0, 9);
 

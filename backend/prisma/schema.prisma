@@ -57,7 +57,6 @@ model Notary {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }
-
 // entities
 
 datasource db {
