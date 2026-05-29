@@ -2,11 +2,10 @@ import {
     closeDatabase,
     prismaTest,
     setupDatabase,
-} from "../../infra/setup/setupDatabase";
+} from "@test/infra/setup/setup.database";
 import { afterAll, beforeAll, expect, test, describe } from "@jest/globals";
-import { makeUserMocked } from "../../mocks/userMocked";
 import { notaryCleaner } from "../../infra/cleaners/notaryCleaner";
-import { makeNotaryMocked } from "../../mocks/notaryMock";
+import { makeNotaryMocked } from "@test/mocks/notary.mocked";
 
 describe("Notary Database CRUD", () => {
     const prisma = prismaTest();

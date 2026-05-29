@@ -2,10 +2,9 @@ import {
     closeDatabase,
     prismaTest,
     setupDatabase,
-} from "../../infra/setup/setupDatabase";
+} from "@test/infra/setup/setup.database";
 import { afterAll, beforeAll, expect, test, describe } from "@jest/globals";
-import { makeUserMocked } from "../../mocks/userMocked";
-import { notaryCleaner } from "../../infra/cleaners/notaryCleaner";
+import { makeUserMocked } from "@test/mocks/user.mocked";
 import { userCleaner } from "../../infra/cleaners/userCleaner";
 
 describe("User Database CRUD", () => {

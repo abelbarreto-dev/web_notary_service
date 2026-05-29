@@ -11,4 +11,9 @@ module.exports = {
     transformIgnorePatterns: [
         "/node_modules/(?!@faker-js/faker)"
     ],
+    moduleNameMapper: {
+        "^@test/(.*)$": "<rootDir>/test/$1",
+        "^@exception/(.*)$": "<rootDir>/src/exceptions/$1",
+        "^@infra/(.*)$": "<rootDir>/src/infra/$1",
+    }
 };

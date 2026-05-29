@@ -108,7 +108,7 @@ def make_a_commit() -> None:
 
     option = int(option)
 
-    if option > 9 or option < 1:
+    if option > 10 or option < 1:
         return
 
     line()

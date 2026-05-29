@@ -5,6 +5,7 @@ import { NotaryException } from "@exception/notary.exception";
 import { NotaryId } from "@infra/notary.models";
 import { validateUUID } from "../general/uuid.util";
 import { UserException } from "@exception/user.exception";
+import { validatorCPF } from "../general/cpf.util";
 
 type NotaryValidator = {
     applicant?: string;
@@ -38,6 +39,13 @@ function cpfTesting(cpf?: string) {
         propsException.message = "invalid notary cpf format";
         propsException.cause =
             "the notary cpf does not matches to the regex expression";
+        propsException.stack = "notary.cpf";
+        throw new NotaryException(propsException);
+    }
+    if (!validatorCPF(cpf || "12345678912")) {
+        propsException.message = "invalid notary cpf checkers digits";
+        propsException.cause =
+            "the notary cpf does not matches to the checkers digits";
         propsException.stack = "notary.cpf";
         throw new NotaryException(propsException);
     }
@@ -77,7 +85,7 @@ function notaryStatusTesting(notaryStatus?: NotaryStatus) {
 
 function notaryTypeTesting(notaryType?: NotaryType) {
     if (!notaryType) {
-        propsException.message = "invalid notary status type";
+        propsException.message = "invalid notary type value";
         propsException.cause =
             "the notary type does not matches to the values BIRTH_CERTIFICATE, " +
             "SIGNATURE_AUTHENTICATION, DOCUMENT_AUTHENTICATION, DEED, OTHER";

@@ -1,4 +1,4 @@
-import { prismaTest } from "../setup/setupDatabase";
+import { prismaTest } from "../setup/setup.database";
 
 export async function userCleaner(): Promise<void> {
     const prisma = prismaTest();

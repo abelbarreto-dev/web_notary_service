@@ -29,7 +29,7 @@ export function makeNotaryMocked(override: {}): NotaryMocked {
     return {
         applicant: chance.name(),
         cpf: generateCPF(),
-        description: chance.paragraph().substring(0, 255),
+        description: chance.paragraph({ sentences: 10 }).substring(0, 254),
         requestDate: new Date(),
         remarks: chance.bool() ? chance.sentence({ words: 10 }) : undefined,
         notaryStatus: chance.pickone<NotaryStatus>([

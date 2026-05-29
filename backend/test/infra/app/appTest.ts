@@ -1,5 +1,5 @@
 import { startServerGraphQL } from "@graphql-pkg/server";
-import { prismaTest } from "@test/infra/setup/setupDatabase";
+import { prismaTest } from "@test/infra/setup/setup.database";
 
 const prisma = prismaTest();
 
