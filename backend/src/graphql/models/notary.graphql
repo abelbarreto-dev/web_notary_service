@@ -13,6 +13,7 @@ enum NotaryType {
 }
 
 input NotaryInput {
+    id: ID
     applicant: String!
     cpf: String!
     description: String!
@@ -23,7 +24,7 @@ input NotaryInput {
 }
 
 input NotaryId {
-    id: String
+    id: String!
 }
 
 type Notary {

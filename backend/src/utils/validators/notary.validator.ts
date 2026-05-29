@@ -19,7 +19,7 @@ const propsException: ExceptionType = {
     code: 400,
     cause: undefined,
     message: "",
-    name: "UserException",
+    name: "NotaryException",
     stack: undefined,
 };
 
