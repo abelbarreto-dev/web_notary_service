@@ -1,10 +1,10 @@
-import {CardRound} from "../../components/general/CardRound";
-import {InputText} from "../../components/general/InputText";
-import {InputPassword} from "../../components/general/InputPassword";
-import {Button} from "../../components/general/Button";
-import {RouterLink} from "../../components/general/LinkRoute";
-import {InputSelect} from "../../components/general/InputSelect";
-import {UserRoleSelect} from "../../infra/user/user.ts";
+import { CardRound } from "../../components/general/CardRound";
+import { InputText } from "../../components/general/InputText";
+import { InputPassword } from "../../components/general/InputPassword";
+import { Button } from "../../components/general/Button";
+import { RouterLink } from "../../components/general/LinkRoute";
+import { InputSelect } from "../../components/general/InputSelect";
+import { UserRoleSelect } from "../../infra/user/user.ts";
 
 export const SingUp = () => {
     return (
@@ -17,10 +17,15 @@ export const SingUp = () => {
                 <form className="flex flex-col text-center">
                     <h1 className={"font-bold text-2xl"}>Cadastrar Usuário</h1>
 
-                    <h2 className={"font-light pb-5"}>Bem-vindo(a) ao Cartório</h2>
+                    <h2 className={"font-light pb-5"}>
+                        Bem-vindo(a) ao Cartório
+                    </h2>
 
                     <div className={"space-y-3 mb-3"}>
-                        <InputText labelText={"Nome Completo*"} placeHolder={"Fulano de Tal"} />
+                        <InputText
+                            labelText={"Nome Completo*"}
+                            placeHolder={"Fulano de Tal"}
+                        />
 
                         <InputText
                             placeHolder={"example@mail.com"}
@@ -32,7 +37,10 @@ export const SingUp = () => {
                             labelText={"Digite sua Senha*"}
                         />
 
-                        <InputSelect labelText={"Tipo de Usuário*"} options={UserRoleSelect} />
+                        <InputSelect
+                            labelText={"Tipo de Usuário*"}
+                            options={UserRoleSelect}
+                        />
                     </div>
 
                     <RouterLink href={"/"} className={"cursor-pointer"}>
@@ -54,4 +62,4 @@ export const SingUp = () => {
             </CardRound>
         </div>
     );
-}
+};

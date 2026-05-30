@@ -1,8 +1,8 @@
-import {CardRound} from "../../components/general/CardRound";
-import {InputText} from "../../components/general/InputText";
-import {InputPassword} from "../../components/general/InputPassword";
-import {Button} from "../../components/general/Button";
-import {RouterLink} from "../../components/general/LinkRoute";
+import { CardRound } from "../../components/general/CardRound";
+import { InputText } from "../../components/general/InputText";
+import { InputPassword } from "../../components/general/InputPassword";
+import { Button } from "../../components/general/Button";
+import { RouterLink } from "../../components/general/LinkRoute";
 
 export const SingIn = () => {
     return (
@@ -15,7 +15,9 @@ export const SingIn = () => {
                 <form className="flex flex-col text-center">
                     <h1 className={"font-bold text-2xl"}>Acessar o Sistema</h1>
 
-                    <h2 className={"font-light pb-5"}>Bem-vindo(a) ao Cartório</h2>
+                    <h2 className={"font-light pb-5"}>
+                        Bem-vindo(a) ao Cartório
+                    </h2>
 
                     <div className={"space-y-3 mb-3"}>
                         <InputText
