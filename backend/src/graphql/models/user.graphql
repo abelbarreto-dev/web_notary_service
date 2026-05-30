@@ -29,12 +29,12 @@ type User {
 }
 
 extend type Query {
-    findAllUsers: [User!]!
+    findAllUsers: UserListResponse
 }
 
 extend type Mutation {
-    createUser(user: UserInput): User,
-    updateUser(user: UserInput): User,
-    deleteUser(user: UserId): User,
-    singInUser(user: UserLogin): User,
+    createUser(user: UserInput): UserResponse,
+    updateUser(user: UserInput): UserResponse,
+    deleteUser(user: UserId): UserResponse,
+    singInUser(user: UserLogin): UserResponse,
 }

@@ -7,3 +7,40 @@ type Query {
 type Mutation {
     _empty: String
 }
+
+type ErrorDetails {
+    code: String!
+    details: String
+}
+
+type UserResponse {
+    success: Boolean!
+    message: String!
+    data: User
+    cause: String
+    error: ErrorDetails
+}
+
+type NotaryResponse {
+    success: Boolean!
+    message: String!
+    data: Notary
+    cause: String
+    error: ErrorDetails
+}
+
+type UserListResponse {
+    success: Boolean!
+    message: String!
+    data: [User!]!
+    cause: String
+    error: ErrorDetails
+}
+
+type NotaryListResponse {
+    success: Boolean!
+    message: String!
+    data: [Notary!]!
+    cause: String
+    error: ErrorDetails
+}

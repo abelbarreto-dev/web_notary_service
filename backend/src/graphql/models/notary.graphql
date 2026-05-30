@@ -41,11 +41,11 @@ type Notary {
 }
 
 extend type Query {
-    findAllNotaries: [Notary!]!
+    findAllNotaries: NotaryListResponse
 }
 
 extend type Mutation {
-    createNotary(notary: NotaryInput): User,
-    updateNotary(notary: NotaryInput): User,
-    deleteNotary(notary: NotaryId): User,
+    createNotary(notary: NotaryInput): NotaryResponse,
+    updateNotary(notary: NotaryInput): NotaryResponse,
+    deleteNotary(notary: NotaryId): NotaryResponse,
 }
