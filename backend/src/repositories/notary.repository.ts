@@ -5,13 +5,6 @@ import { NotaryException } from "@exception/notary.exception";
 
 export class NotaryRepository {
     private prisma: PrismaClient;
-    private notaryException = new NotaryException({
-        name: "NotaryException",
-        message: "",
-        code: 0,
-        cause: "",
-        stack: "",
-    });
 
     constructor(private readonly prismaClient: PrismaClient) {
         this.prisma = prismaClient;
@@ -43,16 +36,10 @@ export class NotaryRepository {
 
     async updateNotary(notary: NotaryInput): Promise<Notary> {
         try {
-            this.notaryException.code = 0;
-
             return await this.prisma.$transaction(async () => {
                 const dbNotary = await this.prisma.notary
                     .findUniqueOrThrow({
-                        where: { id: notary.id ?? "abc123" },
-                    })
-                    .catch((_) => {
-                        this.notaryException.code = 404;
-                        throw this.notaryException;
+                        where: { id: notary.id },
                     });
 
                 const notaryData = {
@@ -73,15 +60,13 @@ export class NotaryRepository {
             });
         } catch (error) {
             console.error(error);
-            this.notaryException.message = "notary update failed";
-            this.notaryException.cause =
-                "the notary update has failed because notary not found or invalid fields";
-            this.notaryException.stack = "process.database.notary.updateFailed";
-
-            if (this.notaryException.code === 0)
-                this.notaryException.code = 422;
-
-            throw this.notaryException;
+            throw new NotaryException({
+                name: "NotaryException",
+                message: "notary update failed",
+                code: 422,
+                cause: "the notary update has failed because notary not found or invalid fields",
+                stack: "process.database.notary.updateFailed",
+            });
         }
     }
 

@@ -32,8 +32,8 @@ export class UserController {
         return await userResponseFactory(userDB);
     }
 
-    async singInUser(user: UserLogin) {
-        const userDB = await this.userService.singInUser(user);
+    async signInUser(user: UserLogin) {
+        const userDB = await this.userService.signInUser(user);
 
         return await userResponseFactory(userDB);
     }

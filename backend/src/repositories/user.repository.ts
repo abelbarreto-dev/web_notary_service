@@ -5,13 +5,6 @@ import { UserException } from "@exception/user.exception";
 
 export class UserRepository {
     private prisma: PrismaClient;
-    private userException: UserException = new UserException({
-        name: "UserException",
-        message: "",
-        code: 0,
-        cause: "",
-        stack: "",
-    });
 
     constructor(private readonly prismaClient: PrismaClient) {
         this.prisma = prismaClient;
@@ -60,13 +53,13 @@ export class UserRepository {
             });
         } catch (error) {
             console.error(error);
-            this.userException.message = "user update failed";
-            this.userException.cause =
-                "the user update has failed because user not found or invalid fields";
-            this.userException.stack = "process.database.user.updateFailed";
-            this.userException.code = 422;
-
-            throw this.userException;
+            throw new UserException({
+                name: "UserException",
+                message: "user update failed",
+                code: 422,
+                cause: "the user update has failed because user not found or invalid fields",
+                stack: "process.database.user.updateFailed",
+            });
         }
     }
 
@@ -82,7 +75,7 @@ export class UserRepository {
         }
     }
 
-    async singInUser(user: UserLogin): Promise<User> {
+    async signInUser(user: UserLogin): Promise<User> {
         try {
             return await this.prisma.$transaction(async () => {
                 return this.prisma.user.findUniqueOrThrow({
@@ -91,12 +84,13 @@ export class UserRepository {
             });
         } catch (error) {
             console.error(error);
-            this.userException.message = "user login failed";
-            this.userException.cause =
-                "the user sign in has failed because user not found for this email";
-            this.userException.stack = "process.database.user.singInFailed";
-            this.userException.code = 404;
-            throw this.userException;
+            throw new UserException({
+                name: "UserException",
+                message: "user login failed",
+                code: 404,
+                cause: "the user sign in has failed because user not found for this email",
+                stack: "process.database.user.singInFailed",
+            });
         }
     }
 }

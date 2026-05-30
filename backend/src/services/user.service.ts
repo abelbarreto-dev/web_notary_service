@@ -45,10 +45,10 @@ export class UserService {
         return await this.userRepository.deleteUser(user);
     }
 
-    async singInUser(user: UserLogin): Promise<User> {
+    async signInUser(user: UserLogin): Promise<User> {
         await validateUserLogin(user);
 
-        const userDB: User = await this.userRepository.singInUser(user);
+        const userDB: User = await this.userRepository.signInUser(user);
 
         await validateUserPassword(user.password, userDB.password);
 

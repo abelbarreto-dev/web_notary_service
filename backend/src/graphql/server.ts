@@ -28,7 +28,7 @@ export async function startServerGraphQL(prismaClient: PrismaClient) {
     const app = express();
 
     // apply security middlewares
-    app.use("graphql", cors(graphqlCorsContext));
+    app.use("/graphql", cors(graphqlCorsContext));
 
     // using json by default
     app.use(express.json());

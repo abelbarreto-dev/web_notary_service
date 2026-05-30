@@ -45,7 +45,7 @@ export const userResolvers = {
                 return await controller.deleteUser(user.user);
             },
         ),
-        singInUser: layerResponseWrapper(
+        signInUser: layerResponseWrapper(
             async (
                 _: any,
                 user: ModelUser<UserLogin>,
@@ -53,7 +53,7 @@ export const userResolvers = {
             ) => {
                 const controller = new UserController(context.prisma);
 
-                return await controller.singInUser(user.user);
+                return await controller.signInUser(user.user);
             },
         ),
     },

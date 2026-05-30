@@ -143,7 +143,7 @@ describe("GraphQL User Tests", () => {
 
         const mutation = `
         mutation Mutation($data: UserLogin!) {
-            singInUser(user: $data) {
+            signInUser(user: $data) {
                 success
                 message
                 data {
@@ -165,7 +165,7 @@ describe("GraphQL User Tests", () => {
 
         expect(response.status).toBe(200);
 
-        const body = response.body.data.singInUser;
+        const body = response.body.data.signInUser;
 
         expect(body.success).toBe(true);
         expect(body.data.email).toBe(user.email);

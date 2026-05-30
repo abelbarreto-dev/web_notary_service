@@ -37,5 +37,5 @@ extend type Mutation {
     createUser(user: UserInput): UserResponse,
     updateUser(user: UserInput): UserResponse,
     deleteUser(user: UserId): UserResponse,
-    singInUser(user: UserLogin): UserResponse,
+    signInUser(user: UserLogin): UserResponse,
 }

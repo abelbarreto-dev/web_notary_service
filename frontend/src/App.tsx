@@ -1,7 +1,13 @@
+import { Login } from "./components/access/Login";
+
 function App() {
     return (
-        <div>
-          Love Of My Life, Queen.
+        <div
+            className={
+                "flex flex-center justify-center h-screen py-10 bg-white"
+            }
+        >
+            <Login />
         </div>
     );
 }
