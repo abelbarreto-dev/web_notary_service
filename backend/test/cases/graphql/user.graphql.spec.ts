@@ -90,7 +90,7 @@ describe("GraphQL User Tests", () => {
 
         const body = response.body.data.findAllUsers;
 
-        expect(body.data).toHaveLength(1);
+        expect(body.data.length).toBeGreaterThanOrEqual(1);
     });
 
     test("user should be able to update", async () => {

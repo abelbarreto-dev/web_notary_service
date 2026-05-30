@@ -10,14 +10,19 @@ import { startServerGraphQL } from "@graphql-pkg/server";
 import request from "supertest";
 import { makeNotaryMocked } from "@test/mocks/notary.mocked";
 import { NotaryStatus, NotaryType } from "@infra/enums/enums";
+import { seedOneUserAndGetId } from "../../seeders/user.seeder";
+import { notaryCleaner } from "@test/infra/cleaners/notaryCleaner";
+import { userCleaner } from "@test/infra/cleaners/userCleaner";
 
 describe("GraphQL Notary Tests", () => {
     let app: Express;
     let prisma: PrismaClient;
+    let userId: string;
 
     beforeAll(async () => {
         await setupDatabase();
         prisma = prismaTest();
+        userId = await seedOneUserAndGetId();
         app = await startServerGraphQL(prisma);
     });
 
@@ -41,6 +46,7 @@ describe("GraphQL Notary Tests", () => {
                     description
                     requestDate
                     remarks
+                    userId
                     notaryStatus
                     notaryType
                     createdAt
@@ -49,6 +55,8 @@ describe("GraphQL Notary Tests", () => {
             }
         }
         `;
+
+        notaryMocked.userId = userId;
 
         const notaryData = {
             data: {
@@ -74,8 +82,8 @@ describe("GraphQL Notary Tests", () => {
 
     test("finding all notaries successfully", async () => {
         const query = `
-        query {
-            findAllNotaries {
+        query Query($data: UserId!){
+            findAllNotaries(user: $data) {
                 success
                 message
                 data {
@@ -84,6 +92,7 @@ describe("GraphQL Notary Tests", () => {
                     cpf
                     description
                     requestDate
+                    userId
                     remarks
                     notaryStatus
                     notaryType
@@ -94,9 +103,12 @@ describe("GraphQL Notary Tests", () => {
         }
         `;
 
-        const response = await request(app).post("/graphql").send({
-            query: query,
-        });
+        const response = await request(app)
+            .post("/graphql")
+            .send({
+                query: query,
+                variables: { data: { id: userId } },
+            });
 
         expect(response.status).toBe(200);
 

@@ -1,6 +1,6 @@
 export const findAllNotariesQuery = `
-query {
-    findAllNotaries {
+query Query($data: UserId!){
+    findAllNotaries(user: $data) {
         success
         message
         data {
@@ -9,6 +9,7 @@ query {
             cpf
             description
             requestDate
+            userId
             remarks
             notaryStatus
             notaryType
@@ -16,5 +17,6 @@ query {
             updatedAt
         }
     }
+}
 }
 `;

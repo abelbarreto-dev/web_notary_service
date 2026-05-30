@@ -6,6 +6,7 @@ export interface NotaryInput {
     cpf: string;
     description: string;
     requestDate: string;
+    userId: string;
     remarks?: string;
     notaryStatus: NotarySratus;
     notaryType: NotaryType;
