@@ -44,12 +44,5 @@ export async function startServerGraphQL(prismaClient: PrismaClient) {
         }),
     );
 
-    const port = Number.parseInt(process.env.API_PORT ?? "8080");
-
-    // when running
-    app.listen(port, () => {
-        console.log(
-            `🚀 Server Pure GraphQL is running at http://localhost:${port}/graphql`,
-        );
-    });
+    return app;
 }

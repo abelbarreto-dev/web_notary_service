@@ -15,5 +15,9 @@ module.exports = {
         "^@test/(.*)$": "<rootDir>/test/$1",
         "^@exception/(.*)$": "<rootDir>/src/exceptions/$1",
         "^@infra/(.*)$": "<rootDir>/src/infra/$1",
+        "@graphql-pkg/(.*)$": "<rootDir>/src/graphql/$1",
+        "@services/(.*)$": "<rootDir>/src/services/$1",
+        "@repositories/(.*)$": "<rootDir>/src/repositories/$1",
+        "@middleware/(.*)$": "<rootDir>/src/middlewares/$1",
     }
 };

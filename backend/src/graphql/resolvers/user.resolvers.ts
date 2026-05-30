@@ -1,7 +1,7 @@
 import { PrismaContext } from "@infra/contexts/prisma.context";
 import { UserId, UserInput, UserLogin } from "@infra/models/user.models";
 import { UserController } from "../../controllers/user.controller";
-import { Models } from "@infra/models/models";
+import { ModelUser } from "@infra/models/models";
 import { layerResponseWrapper } from "@infra/wrappers/response.wrapper";
 
 export const userResolvers = {
@@ -17,31 +17,43 @@ export const userResolvers = {
 
     Mutation: {
         createUser: layerResponseWrapper(
-            async (_: any, user: Models<UserInput>, context: PrismaContext) => {
+            async (
+                _: any,
+                user: ModelUser<UserInput>,
+                context: PrismaContext,
+            ) => {
                 const controller = new UserController(context.prisma);
 
-                return await controller.createUser(user.data);
+                return await controller.createUser(user.user);
             },
         ),
         updateUser: layerResponseWrapper(
-            async (_: any, user: Models<UserInput>, context: PrismaContext) => {
+            async (
+                _: any,
+                user: ModelUser<UserInput>,
+                context: PrismaContext,
+            ) => {
                 const controller = new UserController(context.prisma);
 
-                return await controller.updateUser(user.data);
+                return await controller.updateUser(user.user);
             },
         ),
         deleteUser: layerResponseWrapper(
-            async (_: any, user: Models<UserId>, context: PrismaContext) => {
+            async (_: any, user: ModelUser<UserId>, context: PrismaContext) => {
                 const controller = new UserController(context.prisma);
 
-                return await controller.deleteUser(user.data);
+                return await controller.deleteUser(user.user);
             },
         ),
         singInUser: layerResponseWrapper(
-            async (_: any, user: Models<UserLogin>, context: PrismaContext) => {
+            async (
+                _: any,
+                user: ModelUser<UserLogin>,
+                context: PrismaContext,
+            ) => {
                 const controller = new UserController(context.prisma);
 
-                return await controller.singInUser(user.data);
+                return await controller.singInUser(user.user);
             },
         ),
     },

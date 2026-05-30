@@ -1,7 +1,7 @@
 import { PrismaContext } from "@infra/contexts/prisma.context";
 import { NotaryId, NotaryInput } from "@infra/models/notary.models";
 import { NotaryController } from "../../controllers/notary.controller";
-import { Models } from "@infra/models/models";
+import { ModelNotary } from "@infra/models/models";
 import { layerResponseWrapper } from "@infra/wrappers/response.wrapper";
 
 export const notaryResolvers = {
@@ -19,34 +19,34 @@ export const notaryResolvers = {
         createNotary: layerResponseWrapper(
             async (
                 _: any,
-                notary: Models<NotaryInput>,
+                notary: ModelNotary<NotaryInput>,
                 context: PrismaContext,
             ) => {
                 const controller = new NotaryController(context.prisma);
 
-                return await controller.createNotary(notary.data);
+                return await controller.createNotary(notary.notary);
             },
         ),
         updateNotary: layerResponseWrapper(
             async (
                 _: any,
-                notary: Models<NotaryInput>,
+                notary: ModelNotary<NotaryInput>,
                 context: PrismaContext,
             ) => {
                 const controller = new NotaryController(context.prisma);
 
-                return await controller.updateNotary(notary.data);
+                return await controller.updateNotary(notary.notary);
             },
         ),
         deleteNotary: layerResponseWrapper(
             async (
                 _: any,
-                notary: Models<NotaryId>,
+                notary: ModelNotary<NotaryId>,
                 context: PrismaContext,
             ) => {
                 const controller = new NotaryController(context.prisma);
 
-                return await controller.deleteNotary(notary.data);
+                return await controller.deleteNotary(notary.notary);
             },
         ),
     },

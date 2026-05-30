@@ -1,3 +1,7 @@
-export interface Models<T> {
-    data: T;
+export interface ModelUser<T> {
+    user: T;
+}
+
+export interface ModelNotary<T> {
+    notary: T;
 }
