@@ -7,10 +7,10 @@ import { layerResponseWrapper } from "@infra/wrappers/response.wrapper";
 export const notaryResolvers = {
     Query: {
         findAllNotaries: layerResponseWrapper(
-            async (_: any, context: PrismaContext) => {
+            async (_: any, notary: any, context: PrismaContext) => {
                 const controller = new NotaryController(context.prisma);
 
-                return controller.findAllNotaries();
+                return await controller.findAllNotaries();
             },
         ),
     },

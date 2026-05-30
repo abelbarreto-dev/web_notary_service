@@ -19,8 +19,6 @@ export class NotaryRepository {
 
     async createNotary(notary: NotaryInput): Promise<Notary> {
         try {
-            await this.prisma.$connect();
-
             return await this.prisma.$transaction(async () => {
                 return this.prisma.notary.create({ data: notary });
             });
@@ -28,15 +26,11 @@ export class NotaryRepository {
             console.error(error);
 
             throw new DatabaseException("process.database.notary.createFailed");
-        } finally {
-            await this.prisma.$disconnect();
         }
     }
 
     async findAllNotaries(): Promise<Notary[]> {
         try {
-            await this.prisma.$connect();
-
             return await this.prisma.notary.findMany();
         } catch (error) {
             console.error(error);
@@ -44,16 +38,12 @@ export class NotaryRepository {
             throw new DatabaseException(
                 "process.database.notary.findAllFailed",
             );
-        } finally {
-            await this.prisma.$disconnect();
         }
     }
 
     async updateNotary(notary: NotaryInput): Promise<Notary> {
         try {
             this.notaryException.code = 0;
-
-            await this.prisma.$connect();
 
             return await this.prisma.$transaction(async () => {
                 const dbNotary = await this.prisma.notary
@@ -92,15 +82,11 @@ export class NotaryRepository {
                 this.notaryException.code = 422;
 
             throw this.notaryException;
-        } finally {
-            await this.prisma.$disconnect();
         }
     }
 
     async deleteNotary(notaryId: NotaryId): Promise<Notary> {
         try {
-            await this.prisma.$connect();
-
             return await this.prisma.$transaction(async () => {
                 return this.prisma.notary.delete({
                     where: { id: notaryId.id },
@@ -112,8 +98,6 @@ export class NotaryRepository {
             throw new DatabaseException(
                 "process.database.notary.deletedFailed",
             );
-        } finally {
-            await this.prisma.$disconnect();
         }
     }
 }

@@ -198,8 +198,6 @@ describe("GraphQL User Tests", () => {
             variables: userData,
         });
 
-        console.log(response.body);
-
         expect(response.status).toBe(200);
 
         const body = response.body.data.deleteUser;

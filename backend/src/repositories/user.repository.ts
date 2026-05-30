@@ -19,8 +19,6 @@ export class UserRepository {
 
     async createUser(user: UserInput): Promise<User> {
         try {
-            await this.prisma.$connect();
-
             return await this.prisma.$transaction(async () => {
                 return this.prisma.user.create({ data: user });
             });
@@ -28,29 +26,21 @@ export class UserRepository {
             console.error(error);
 
             throw new DatabaseException("process.database.user.createFailed");
-        } finally {
-            await this.prisma.$disconnect();
         }
     }
 
     async findAllUsers(): Promise<User[]> {
         try {
-            await this.prisma.$connect();
-
             return await this.prisma.user.findMany();
         } catch (error) {
             console.error(error);
 
             throw new DatabaseException("process.database.user.findAllFailed");
-        } finally {
-            await this.prisma.$disconnect();
         }
     }
 
     async updateUser(user: UserInput): Promise<User> {
         try {
-            await this.prisma.$connect();
-
             return await this.prisma.$transaction(async () => {
                 const dbUser = await this.prisma.user.findUniqueOrThrow({
                     where: { id: user.id },
@@ -77,15 +67,11 @@ export class UserRepository {
             this.userException.code = 422;
 
             throw this.userException;
-        } finally {
-            await this.prisma.$disconnect();
         }
     }
 
     async deleteUser(user: UserId): Promise<User> {
         try {
-            await this.prisma.$connect();
-
             return await this.prisma.$transaction(async () => {
                 return this.prisma.user.delete({ where: { id: user.id } });
             });
@@ -93,15 +79,11 @@ export class UserRepository {
             console.error(error);
 
             throw new DatabaseException("process.database.user.deletedFailed");
-        } finally {
-            await this.prisma.$disconnect();
         }
     }
 
     async singInUser(user: UserLogin): Promise<User> {
         try {
-            await this.prisma.$connect();
-
             return await this.prisma.$transaction(async () => {
                 return this.prisma.user.findUniqueOrThrow({
                     where: { email: user.email },
@@ -115,8 +97,6 @@ export class UserRepository {
             this.userException.stack = "process.database.user.singInFailed";
             this.userException.code = 404;
             throw this.userException;
-        } finally {
-            await this.prisma.$disconnect();
         }
     }
 }
