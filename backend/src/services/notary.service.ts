@@ -5,6 +5,8 @@ import {
     validateNotaryCreateOrUpdate,
     validateNotaryId,
 } from "../utils/validators/notary.validator";
+import { UserId } from "@infra/models/user.models";
+import { validateUserId } from "../utils/validators/user.validator";
 
 export class NotaryService {
     private notaryRepository: NotaryRepository;
@@ -19,8 +21,10 @@ export class NotaryService {
         return await this.notaryRepository.createNotary(notary);
     }
 
-    async findAllNotaries(): Promise<Notary[]> {
-        return await this.notaryRepository.findAllNotaries();
+    async findAllNotaries(user: UserId): Promise<Notary[]> {
+        await validateUserId(user);
+
+        return await this.notaryRepository.findAllNotaries(user);
     }
 
     async updateNotary(notary: NotaryInput): Promise<Notary> {

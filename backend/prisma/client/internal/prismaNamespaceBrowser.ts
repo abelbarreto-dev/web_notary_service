@@ -93,6 +93,7 @@ export const NotaryScalarFieldEnum = {
   remarks: 'remarks',
   notaryStatus: 'notaryStatus',
   notaryType: 'notaryType',
+  userId: 'userId',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 } as const

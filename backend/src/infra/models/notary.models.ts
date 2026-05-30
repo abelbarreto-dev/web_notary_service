@@ -7,6 +7,7 @@ export interface NotaryInput {
     description: string;
     requestDate: string;
     remarks?: string;
+    userId: string;
     notaryStatus: NotaryStatus;
     notaryType: NotaryType;
 }
@@ -22,6 +23,7 @@ export interface Notary {
     description: string;
     requestDate: string;
     remarks?: string;
+    userId: string;
     notaryStatus: NotaryStatus;
     notaryType: NotaryType;
     createdAt: string;

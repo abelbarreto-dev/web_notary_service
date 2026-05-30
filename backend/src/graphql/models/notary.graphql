@@ -41,7 +41,7 @@ type Notary {
 }
 
 extend type Query {
-    findAllNotaries: NotaryListResponse
+    findAllNotaries(user: UserId): NotaryListResponse
 }
 
 extend type Mutation {

@@ -4,7 +4,7 @@
 // biome-ignore-all lint: generated file
 // @ts-nocheck 
 /*
-* This file exports all enum related models from the schema.
+* This file exports all enum related types from the schema.
 *
 * 🟢 You can import this file directly.
 */

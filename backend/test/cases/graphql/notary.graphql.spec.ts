@@ -100,7 +100,7 @@ describe("GraphQL Notary Tests", () => {
 
         expect(response.status).toBe(200);
 
-        console.log(response.body.data)
+        console.log(response.body.data);
 
         const body = response.body.data.findAllNotaries;
 

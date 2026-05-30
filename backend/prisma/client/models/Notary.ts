@@ -4,7 +4,7 @@
 // biome-ignore-all lint: generated file
 // @ts-nocheck 
 /*
- * This file exports the `Notary` model and its related models.
+ * This file exports the `Notary` model and its related types.
  *
  * 🟢 You can import this file directly.
  */
@@ -33,6 +33,7 @@ export type NotaryMinAggregateOutputType = {
   remarks: string | null
   notaryStatus: $Enums.NotaryStatus | null
   notaryType: $Enums.NotaryType | null
+  userId: string | null
   createdAt: Date | null
   updatedAt: Date | null
 }
@@ -46,6 +47,7 @@ export type NotaryMaxAggregateOutputType = {
   remarks: string | null
   notaryStatus: $Enums.NotaryStatus | null
   notaryType: $Enums.NotaryType | null
+  userId: string | null
   createdAt: Date | null
   updatedAt: Date | null
 }
@@ -59,6 +61,7 @@ export type NotaryCountAggregateOutputType = {
   remarks: number
   notaryStatus: number
   notaryType: number
+  userId: number
   createdAt: number
   updatedAt: number
   _all: number
@@ -74,6 +77,7 @@ export type NotaryMinAggregateInputType = {
   remarks?: true
   notaryStatus?: true
   notaryType?: true
+  userId?: true
   createdAt?: true
   updatedAt?: true
 }
@@ -87,6 +91,7 @@ export type NotaryMaxAggregateInputType = {
   remarks?: true
   notaryStatus?: true
   notaryType?: true
+  userId?: true
   createdAt?: true
   updatedAt?: true
 }
@@ -100,6 +105,7 @@ export type NotaryCountAggregateInputType = {
   remarks?: true
   notaryStatus?: true
   notaryType?: true
+  userId?: true
   createdAt?: true
   updatedAt?: true
   _all?: true
@@ -186,6 +192,7 @@ export type NotaryGroupByOutputType = {
   remarks: string | null
   notaryStatus: $Enums.NotaryStatus
   notaryType: $Enums.NotaryType
+  userId: string
   createdAt: Date
   updatedAt: Date
   _count: NotaryCountAggregateOutputType | null
@@ -220,8 +227,10 @@ export type NotaryWhereInput = {
   remarks?: Prisma.StringNullableFilter<"Notary"> | string | null
   notaryStatus?: Prisma.EnumNotaryStatusFilter<"Notary"> | $Enums.NotaryStatus
   notaryType?: Prisma.EnumNotaryTypeFilter<"Notary"> | $Enums.NotaryType
+  userId?: Prisma.StringFilter<"Notary"> | string
   createdAt?: Prisma.DateTimeFilter<"Notary"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Notary"> | Date | string
+  user?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
 }
 
 export type NotaryOrderByWithRelationInput = {
@@ -233,8 +242,10 @@ export type NotaryOrderByWithRelationInput = {
   remarks?: Prisma.SortOrderInput | Prisma.SortOrder
   notaryStatus?: Prisma.SortOrder
   notaryType?: Prisma.SortOrder
+  userId?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
+  user?: Prisma.UserOrderByWithRelationInput
 }
 
 export type NotaryWhereUniqueInput = Prisma.AtLeast<{
@@ -249,8 +260,10 @@ export type NotaryWhereUniqueInput = Prisma.AtLeast<{
   remarks?: Prisma.StringNullableFilter<"Notary"> | string | null
   notaryStatus?: Prisma.EnumNotaryStatusFilter<"Notary"> | $Enums.NotaryStatus
   notaryType?: Prisma.EnumNotaryTypeFilter<"Notary"> | $Enums.NotaryType
+  userId?: Prisma.StringFilter<"Notary"> | string
   createdAt?: Prisma.DateTimeFilter<"Notary"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Notary"> | Date | string
+  user?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
 }, "id">
 
 export type NotaryOrderByWithAggregationInput = {
@@ -262,6 +275,7 @@ export type NotaryOrderByWithAggregationInput = {
   remarks?: Prisma.SortOrderInput | Prisma.SortOrder
   notaryStatus?: Prisma.SortOrder
   notaryType?: Prisma.SortOrder
+  userId?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   _count?: Prisma.NotaryCountOrderByAggregateInput
@@ -281,6 +295,7 @@ export type NotaryScalarWhereWithAggregatesInput = {
   remarks?: Prisma.StringNullableWithAggregatesFilter<"Notary"> | string | null
   notaryStatus?: Prisma.EnumNotaryStatusWithAggregatesFilter<"Notary"> | $Enums.NotaryStatus
   notaryType?: Prisma.EnumNotaryTypeWithAggregatesFilter<"Notary"> | $Enums.NotaryType
+  userId?: Prisma.StringWithAggregatesFilter<"Notary"> | string
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"Notary"> | Date | string
   updatedAt?: Prisma.DateTimeWithAggregatesFilter<"Notary"> | Date | string
 }
@@ -296,6 +311,7 @@ export type NotaryCreateInput = {
   notaryType: $Enums.NotaryType
   createdAt?: Date | string
   updatedAt?: Date | string
+  user: Prisma.UserCreateNestedOneWithoutNotariesInput
 }
 
 export type NotaryUncheckedCreateInput = {
@@ -307,6 +323,7 @@ export type NotaryUncheckedCreateInput = {
   remarks?: string | null
   notaryStatus?: $Enums.NotaryStatus
   notaryType: $Enums.NotaryType
+  userId: string
   createdAt?: Date | string
   updatedAt?: Date | string
 }
@@ -322,6 +339,7 @@ export type NotaryUpdateInput = {
   notaryType?: Prisma.EnumNotaryTypeFieldUpdateOperationsInput | $Enums.NotaryType
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  user?: Prisma.UserUpdateOneRequiredWithoutNotariesNestedInput
 }
 
 export type NotaryUncheckedUpdateInput = {
@@ -333,6 +351,7 @@ export type NotaryUncheckedUpdateInput = {
   remarks?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   notaryStatus?: Prisma.EnumNotaryStatusFieldUpdateOperationsInput | $Enums.NotaryStatus
   notaryType?: Prisma.EnumNotaryTypeFieldUpdateOperationsInput | $Enums.NotaryType
+  userId?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -346,6 +365,7 @@ export type NotaryCreateManyInput = {
   remarks?: string | null
   notaryStatus?: $Enums.NotaryStatus
   notaryType: $Enums.NotaryType
+  userId: string
   createdAt?: Date | string
   updatedAt?: Date | string
 }
@@ -372,8 +392,19 @@ export type NotaryUncheckedUpdateManyInput = {
   remarks?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   notaryStatus?: Prisma.EnumNotaryStatusFieldUpdateOperationsInput | $Enums.NotaryStatus
   notaryType?: Prisma.EnumNotaryTypeFieldUpdateOperationsInput | $Enums.NotaryType
+  userId?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+}
+
+export type NotaryListRelationFilter = {
+  every?: Prisma.NotaryWhereInput
+  some?: Prisma.NotaryWhereInput
+  none?: Prisma.NotaryWhereInput
+}
+
+export type NotaryOrderByRelationAggregateInput = {
+  _count?: Prisma.SortOrder
 }
 
 export type NotaryCountOrderByAggregateInput = {
@@ -385,6 +416,7 @@ export type NotaryCountOrderByAggregateInput = {
   remarks?: Prisma.SortOrder
   notaryStatus?: Prisma.SortOrder
   notaryType?: Prisma.SortOrder
+  userId?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
 }
@@ -398,6 +430,7 @@ export type NotaryMaxOrderByAggregateInput = {
   remarks?: Prisma.SortOrder
   notaryStatus?: Prisma.SortOrder
   notaryType?: Prisma.SortOrder
+  userId?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
 }
@@ -411,8 +444,51 @@ export type NotaryMinOrderByAggregateInput = {
   remarks?: Prisma.SortOrder
   notaryStatus?: Prisma.SortOrder
   notaryType?: Prisma.SortOrder
+  userId?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
+}
+
+export type NotaryCreateNestedManyWithoutUserInput = {
+  create?: Prisma.XOR<Prisma.NotaryCreateWithoutUserInput, Prisma.NotaryUncheckedCreateWithoutUserInput> | Prisma.NotaryCreateWithoutUserInput[] | Prisma.NotaryUncheckedCreateWithoutUserInput[]
+  connectOrCreate?: Prisma.NotaryCreateOrConnectWithoutUserInput | Prisma.NotaryCreateOrConnectWithoutUserInput[]
+  createMany?: Prisma.NotaryCreateManyUserInputEnvelope
+  connect?: Prisma.NotaryWhereUniqueInput | Prisma.NotaryWhereUniqueInput[]
+}
+
+export type NotaryUncheckedCreateNestedManyWithoutUserInput = {
+  create?: Prisma.XOR<Prisma.NotaryCreateWithoutUserInput, Prisma.NotaryUncheckedCreateWithoutUserInput> | Prisma.NotaryCreateWithoutUserInput[] | Prisma.NotaryUncheckedCreateWithoutUserInput[]
+  connectOrCreate?: Prisma.NotaryCreateOrConnectWithoutUserInput | Prisma.NotaryCreateOrConnectWithoutUserInput[]
+  createMany?: Prisma.NotaryCreateManyUserInputEnvelope
+  connect?: Prisma.NotaryWhereUniqueInput | Prisma.NotaryWhereUniqueInput[]
+}
+
+export type NotaryUpdateManyWithoutUserNestedInput = {
+  create?: Prisma.XOR<Prisma.NotaryCreateWithoutUserInput, Prisma.NotaryUncheckedCreateWithoutUserInput> | Prisma.NotaryCreateWithoutUserInput[] | Prisma.NotaryUncheckedCreateWithoutUserInput[]
+  connectOrCreate?: Prisma.NotaryCreateOrConnectWithoutUserInput | Prisma.NotaryCreateOrConnectWithoutUserInput[]
+  upsert?: Prisma.NotaryUpsertWithWhereUniqueWithoutUserInput | Prisma.NotaryUpsertWithWhereUniqueWithoutUserInput[]
+  createMany?: Prisma.NotaryCreateManyUserInputEnvelope
+  set?: Prisma.NotaryWhereUniqueInput | Prisma.NotaryWhereUniqueInput[]
+  disconnect?: Prisma.NotaryWhereUniqueInput | Prisma.NotaryWhereUniqueInput[]
+  delete?: Prisma.NotaryWhereUniqueInput | Prisma.NotaryWhereUniqueInput[]
+  connect?: Prisma.NotaryWhereUniqueInput | Prisma.NotaryWhereUniqueInput[]
+  update?: Prisma.NotaryUpdateWithWhereUniqueWithoutUserInput | Prisma.NotaryUpdateWithWhereUniqueWithoutUserInput[]
+  updateMany?: Prisma.NotaryUpdateManyWithWhereWithoutUserInput | Prisma.NotaryUpdateManyWithWhereWithoutUserInput[]
+  deleteMany?: Prisma.NotaryScalarWhereInput | Prisma.NotaryScalarWhereInput[]
+}
+
+export type NotaryUncheckedUpdateManyWithoutUserNestedInput = {
+  create?: Prisma.XOR<Prisma.NotaryCreateWithoutUserInput, Prisma.NotaryUncheckedCreateWithoutUserInput> | Prisma.NotaryCreateWithoutUserInput[] | Prisma.NotaryUncheckedCreateWithoutUserInput[]
+  connectOrCreate?: Prisma.NotaryCreateOrConnectWithoutUserInput | Prisma.NotaryCreateOrConnectWithoutUserInput[]
+  upsert?: Prisma.NotaryUpsertWithWhereUniqueWithoutUserInput | Prisma.NotaryUpsertWithWhereUniqueWithoutUserInput[]
+  createMany?: Prisma.NotaryCreateManyUserInputEnvelope
+  set?: Prisma.NotaryWhereUniqueInput | Prisma.NotaryWhereUniqueInput[]
+  disconnect?: Prisma.NotaryWhereUniqueInput | Prisma.NotaryWhereUniqueInput[]
+  delete?: Prisma.NotaryWhereUniqueInput | Prisma.NotaryWhereUniqueInput[]
+  connect?: Prisma.NotaryWhereUniqueInput | Prisma.NotaryWhereUniqueInput[]
+  update?: Prisma.NotaryUpdateWithWhereUniqueWithoutUserInput | Prisma.NotaryUpdateWithWhereUniqueWithoutUserInput[]
+  updateMany?: Prisma.NotaryUpdateManyWithWhereWithoutUserInput | Prisma.NotaryUpdateManyWithWhereWithoutUserInput[]
+  deleteMany?: Prisma.NotaryScalarWhereInput | Prisma.NotaryScalarWhereInput[]
 }
 
 export type NullableStringFieldUpdateOperationsInput = {
@@ -427,6 +503,127 @@ export type EnumNotaryTypeFieldUpdateOperationsInput = {
   set?: $Enums.NotaryType
 }
 
+export type NotaryCreateWithoutUserInput = {
+  id?: string
+  applicant: string
+  cpf: string
+  description: string
+  requestDate: Date | string
+  remarks?: string | null
+  notaryStatus?: $Enums.NotaryStatus
+  notaryType: $Enums.NotaryType
+  createdAt?: Date | string
+  updatedAt?: Date | string
+}
+
+export type NotaryUncheckedCreateWithoutUserInput = {
+  id?: string
+  applicant: string
+  cpf: string
+  description: string
+  requestDate: Date | string
+  remarks?: string | null
+  notaryStatus?: $Enums.NotaryStatus
+  notaryType: $Enums.NotaryType
+  createdAt?: Date | string
+  updatedAt?: Date | string
+}
+
+export type NotaryCreateOrConnectWithoutUserInput = {
+  where: Prisma.NotaryWhereUniqueInput
+  create: Prisma.XOR<Prisma.NotaryCreateWithoutUserInput, Prisma.NotaryUncheckedCreateWithoutUserInput>
+}
+
+export type NotaryCreateManyUserInputEnvelope = {
+  data: Prisma.NotaryCreateManyUserInput | Prisma.NotaryCreateManyUserInput[]
+  skipDuplicates?: boolean
+}
+
+export type NotaryUpsertWithWhereUniqueWithoutUserInput = {
+  where: Prisma.NotaryWhereUniqueInput
+  update: Prisma.XOR<Prisma.NotaryUpdateWithoutUserInput, Prisma.NotaryUncheckedUpdateWithoutUserInput>
+  create: Prisma.XOR<Prisma.NotaryCreateWithoutUserInput, Prisma.NotaryUncheckedCreateWithoutUserInput>
+}
+
+export type NotaryUpdateWithWhereUniqueWithoutUserInput = {
+  where: Prisma.NotaryWhereUniqueInput
+  data: Prisma.XOR<Prisma.NotaryUpdateWithoutUserInput, Prisma.NotaryUncheckedUpdateWithoutUserInput>
+}
+
+export type NotaryUpdateManyWithWhereWithoutUserInput = {
+  where: Prisma.NotaryScalarWhereInput
+  data: Prisma.XOR<Prisma.NotaryUpdateManyMutationInput, Prisma.NotaryUncheckedUpdateManyWithoutUserInput>
+}
+
+export type NotaryScalarWhereInput = {
+  AND?: Prisma.NotaryScalarWhereInput | Prisma.NotaryScalarWhereInput[]
+  OR?: Prisma.NotaryScalarWhereInput[]
+  NOT?: Prisma.NotaryScalarWhereInput | Prisma.NotaryScalarWhereInput[]
+  id?: Prisma.StringFilter<"Notary"> | string
+  applicant?: Prisma.StringFilter<"Notary"> | string
+  cpf?: Prisma.StringFilter<"Notary"> | string
+  description?: Prisma.StringFilter<"Notary"> | string
+  requestDate?: Prisma.DateTimeFilter<"Notary"> | Date | string
+  remarks?: Prisma.StringNullableFilter<"Notary"> | string | null
+  notaryStatus?: Prisma.EnumNotaryStatusFilter<"Notary"> | $Enums.NotaryStatus
+  notaryType?: Prisma.EnumNotaryTypeFilter<"Notary"> | $Enums.NotaryType
+  userId?: Prisma.StringFilter<"Notary"> | string
+  createdAt?: Prisma.DateTimeFilter<"Notary"> | Date | string
+  updatedAt?: Prisma.DateTimeFilter<"Notary"> | Date | string
+}
+
+export type NotaryCreateManyUserInput = {
+  id?: string
+  applicant: string
+  cpf: string
+  description: string
+  requestDate: Date | string
+  remarks?: string | null
+  notaryStatus?: $Enums.NotaryStatus
+  notaryType: $Enums.NotaryType
+  createdAt?: Date | string
+  updatedAt?: Date | string
+}
+
+export type NotaryUpdateWithoutUserInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  applicant?: Prisma.StringFieldUpdateOperationsInput | string
+  cpf?: Prisma.StringFieldUpdateOperationsInput | string
+  description?: Prisma.StringFieldUpdateOperationsInput | string
+  requestDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  remarks?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  notaryStatus?: Prisma.EnumNotaryStatusFieldUpdateOperationsInput | $Enums.NotaryStatus
+  notaryType?: Prisma.EnumNotaryTypeFieldUpdateOperationsInput | $Enums.NotaryType
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+}
+
+export type NotaryUncheckedUpdateWithoutUserInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  applicant?: Prisma.StringFieldUpdateOperationsInput | string
+  cpf?: Prisma.StringFieldUpdateOperationsInput | string
+  description?: Prisma.StringFieldUpdateOperationsInput | string
+  requestDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  remarks?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  notaryStatus?: Prisma.EnumNotaryStatusFieldUpdateOperationsInput | $Enums.NotaryStatus
+  notaryType?: Prisma.EnumNotaryTypeFieldUpdateOperationsInput | $Enums.NotaryType
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+}
+
+export type NotaryUncheckedUpdateManyWithoutUserInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  applicant?: Prisma.StringFieldUpdateOperationsInput | string
+  cpf?: Prisma.StringFieldUpdateOperationsInput | string
+  description?: Prisma.StringFieldUpdateOperationsInput | string
+  requestDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  remarks?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  notaryStatus?: Prisma.EnumNotaryStatusFieldUpdateOperationsInput | $Enums.NotaryStatus
+  notaryType?: Prisma.EnumNotaryTypeFieldUpdateOperationsInput | $Enums.NotaryType
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+}
+
 
 
 export type NotarySelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -438,8 +635,10 @@ export type NotarySelect<ExtArgs extends runtime.Types.Extensions.InternalArgs =
   remarks?: boolean
   notaryStatus?: boolean
   notaryType?: boolean
+  userId?: boolean
   createdAt?: boolean
   updatedAt?: boolean
+  user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["notary"]>
 
 export type NotarySelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -451,8 +650,10 @@ export type NotarySelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extens
   remarks?: boolean
   notaryStatus?: boolean
   notaryType?: boolean
+  userId?: boolean
   createdAt?: boolean
   updatedAt?: boolean
+  user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["notary"]>
 
 export type NotarySelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -464,8 +665,10 @@ export type NotarySelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extens
   remarks?: boolean
   notaryStatus?: boolean
   notaryType?: boolean
+  userId?: boolean
   createdAt?: boolean
   updatedAt?: boolean
+  user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["notary"]>
 
 export type NotarySelectScalar = {
@@ -477,15 +680,27 @@ export type NotarySelectScalar = {
   remarks?: boolean
   notaryStatus?: boolean
   notaryType?: boolean
+  userId?: boolean
   createdAt?: boolean
   updatedAt?: boolean
 }
 
-export type NotaryOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "applicant" | "cpf" | "description" | "requestDate" | "remarks" | "notaryStatus" | "notaryType" | "createdAt" | "updatedAt", ExtArgs["result"]["notary"]>
+export type NotaryOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "applicant" | "cpf" | "description" | "requestDate" | "remarks" | "notaryStatus" | "notaryType" | "userId" | "createdAt" | "updatedAt", ExtArgs["result"]["notary"]>
+export type NotaryInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
+}
+export type NotaryIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
+}
+export type NotaryIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
+}
 
 export type $NotaryPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "Notary"
-  objects: {}
+  objects: {
+    user: Prisma.$UserPayload<ExtArgs>
+  }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
     applicant: string
@@ -495,6 +710,7 @@ export type $NotaryPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs
     remarks: string | null
     notaryStatus: $Enums.NotaryStatus
     notaryType: $Enums.NotaryType
+    userId: string
     createdAt: Date
     updatedAt: Date
   }, ExtArgs["result"]["notary"]>
@@ -891,6 +1107,7 @@ readonly fields: NotaryFieldRefs;
  */
 export interface Prisma__NotaryClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
+  user<T extends Prisma.UserDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.UserDefaultArgs<ExtArgs>>): Prisma.Prisma__UserClient<runtime.Types.Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -928,6 +1145,7 @@ export interface NotaryFieldRefs {
   readonly remarks: Prisma.FieldRef<"Notary", 'String'>
   readonly notaryStatus: Prisma.FieldRef<"Notary", 'NotaryStatus'>
   readonly notaryType: Prisma.FieldRef<"Notary", 'NotaryType'>
+  readonly userId: Prisma.FieldRef<"Notary", 'String'>
   readonly createdAt: Prisma.FieldRef<"Notary", 'DateTime'>
   readonly updatedAt: Prisma.FieldRef<"Notary", 'DateTime'>
 }
@@ -947,6 +1165,10 @@ export type NotaryFindUniqueArgs<ExtArgs extends runtime.Types.Extensions.Intern
    */
   omit?: Prisma.NotaryOmit<ExtArgs> | null
   /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.NotaryInclude<ExtArgs> | null
+  /**
    * Filter, which Notary to fetch.
    */
   where: Prisma.NotaryWhereUniqueInput
@@ -965,6 +1187,10 @@ export type NotaryFindUniqueOrThrowArgs<ExtArgs extends runtime.Types.Extensions
    */
   omit?: Prisma.NotaryOmit<ExtArgs> | null
   /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.NotaryInclude<ExtArgs> | null
+  /**
    * Filter, which Notary to fetch.
    */
   where: Prisma.NotaryWhereUniqueInput
@@ -982,6 +1208,10 @@ export type NotaryFindFirstArgs<ExtArgs extends runtime.Types.Extensions.Interna
    * Omit specific fields from the Notary
    */
   omit?: Prisma.NotaryOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.NotaryInclude<ExtArgs> | null
   /**
    * Filter, which Notary to fetch.
    */
@@ -1031,6 +1261,10 @@ export type NotaryFindFirstOrThrowArgs<ExtArgs extends runtime.Types.Extensions.
    */
   omit?: Prisma.NotaryOmit<ExtArgs> | null
   /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.NotaryInclude<ExtArgs> | null
+  /**
    * Filter, which Notary to fetch.
    */
   where?: Prisma.NotaryWhereInput
@@ -1078,6 +1312,10 @@ export type NotaryFindManyArgs<ExtArgs extends runtime.Types.Extensions.Internal
    * Omit specific fields from the Notary
    */
   omit?: Prisma.NotaryOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.NotaryInclude<ExtArgs> | null
   /**
    * Filter, which Notaries to fetch.
    */
@@ -1127,6 +1365,10 @@ export type NotaryCreateArgs<ExtArgs extends runtime.Types.Extensions.InternalAr
    */
   omit?: Prisma.NotaryOmit<ExtArgs> | null
   /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.NotaryInclude<ExtArgs> | null
+  /**
    * The data needed to create a Notary.
    */
   data: Prisma.XOR<Prisma.NotaryCreateInput, Prisma.NotaryUncheckedCreateInput>
@@ -1160,6 +1402,10 @@ export type NotaryCreateManyAndReturnArgs<ExtArgs extends runtime.Types.Extensio
    */
   data: Prisma.NotaryCreateManyInput | Prisma.NotaryCreateManyInput[]
   skipDuplicates?: boolean
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.NotaryIncludeCreateManyAndReturn<ExtArgs> | null
 }
 
 /**
@@ -1174,6 +1420,10 @@ export type NotaryUpdateArgs<ExtArgs extends runtime.Types.Extensions.InternalAr
    * Omit specific fields from the Notary
    */
   omit?: Prisma.NotaryOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.NotaryInclude<ExtArgs> | null
   /**
    * The data needed to update a Notary.
    */
@@ -1226,6 +1476,10 @@ export type NotaryUpdateManyAndReturnArgs<ExtArgs extends runtime.Types.Extensio
    * Limit how many Notaries to update.
    */
   limit?: number
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.NotaryIncludeUpdateManyAndReturn<ExtArgs> | null
 }
 
 /**
@@ -1240,6 +1494,10 @@ export type NotaryUpsertArgs<ExtArgs extends runtime.Types.Extensions.InternalAr
    * Omit specific fields from the Notary
    */
   omit?: Prisma.NotaryOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.NotaryInclude<ExtArgs> | null
   /**
    * The filter to search for the Notary to update in case it exists.
    */
@@ -1266,6 +1524,10 @@ export type NotaryDeleteArgs<ExtArgs extends runtime.Types.Extensions.InternalAr
    * Omit specific fields from the Notary
    */
   omit?: Prisma.NotaryOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.NotaryInclude<ExtArgs> | null
   /**
    * Filter which Notary to delete.
    */
@@ -1298,4 +1560,8 @@ export type NotaryDefaultArgs<ExtArgs extends runtime.Types.Extensions.InternalA
    * Omit specific fields from the Notary
    */
   omit?: Prisma.NotaryOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.NotaryInclude<ExtArgs> | null
 }

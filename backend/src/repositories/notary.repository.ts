@@ -2,6 +2,7 @@ import { Notary, PrismaClient } from "../../prisma/client/client";
 import { NotaryId, NotaryInput } from "@infra/models/notary.models";
 import { DatabaseException } from "@exception/database.exception";
 import { NotaryException } from "@exception/notary.exception";
+import { UserId } from "@infra/models/user.models";
 
 export class NotaryRepository {
     private prisma: PrismaClient;
@@ -22,9 +23,11 @@ export class NotaryRepository {
         }
     }
 
-    async findAllNotaries(): Promise<Notary[]> {
+    async findAllNotaries(user: UserId): Promise<Notary[]> {
         try {
-            return await this.prisma.notary.findMany();
+            return await this.prisma.notary.findMany({
+                where: { userId: user.id },
+            });
         } catch (error) {
             console.error(error);
 
@@ -37,10 +40,9 @@ export class NotaryRepository {
     async updateNotary(notary: NotaryInput): Promise<Notary> {
         try {
             return await this.prisma.$transaction(async () => {
-                const dbNotary = await this.prisma.notary
-                    .findUniqueOrThrow({
-                        where: { id: notary.id },
-                    });
+                const dbNotary = await this.prisma.notary.findUniqueOrThrow({
+                    where: { id: notary.id },
+                });
 
                 const notaryData = {
                     id: dbNotary.id,
