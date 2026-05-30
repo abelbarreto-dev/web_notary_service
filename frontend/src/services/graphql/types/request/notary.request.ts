@@ -1,4 +1,4 @@
-import { NotaryType, NotarySratus } from "../../../enums/enums.ts";
+import { NotarySratus, NotaryType } from "../../../enums/enums.ts";
 
 export interface NotaryInput {
     id?: string;
@@ -7,7 +7,7 @@ export interface NotaryInput {
     description: string;
     requestDate: string;
     remarks?: string;
-    notaryStatus: NotaryStatus;
+    notaryStatus: NotarySratus;
     notaryType: NotaryType;
 }
 

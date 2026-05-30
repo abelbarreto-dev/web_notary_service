@@ -39,6 +39,8 @@ model User {
   password String   @db.VarChar(512)
   profile  UserRole
 
+  notaries Notary[]
+
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }
@@ -53,6 +55,9 @@ model Notary {
   remarks      String?      @db.VarChar(512)
   notaryStatus NotaryStatus @default(PENDING)
   notaryType   NotaryType
+
+  userId String
+  user   User @relation(fields: [userId], references: [id])
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
