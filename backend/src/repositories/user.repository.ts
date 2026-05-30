@@ -49,19 +49,12 @@ export class UserRepository {
 
     async updateUser(user: UserInput): Promise<User> {
         try {
-            this.userException.code = 0;
-
             await this.prisma.$connect();
 
             return await this.prisma.$transaction(async () => {
-                const dbUser = await this.prisma.user
-                    .findUniqueOrThrow({
-                        where: { email: user.email },
-                    })
-                    .catch((_) => {
-                        this.userException.code = 404;
-                        throw this.userException;
-                    });
+                const dbUser = await this.prisma.user.findUniqueOrThrow({
+                    where: { id: user.id },
+                });
 
                 const userData = {
                     id: dbUser.id,
@@ -81,8 +74,7 @@ export class UserRepository {
             this.userException.cause =
                 "the user update has failed because user not found or invalid fields";
             this.userException.stack = "process.database.user.updateFailed";
-
-            if (this.userException.code === 0) this.userException.code = 422;
+            this.userException.code = 422;
 
             throw this.userException;
         } finally {

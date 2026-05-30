@@ -4,6 +4,7 @@ enum UserRole {
 }
 
 input UserInput {
+    id: ID
     name: String!
     email: String!
     password: String!
