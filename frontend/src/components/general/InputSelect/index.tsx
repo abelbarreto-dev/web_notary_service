@@ -3,12 +3,12 @@ import { ChevronDown, Check } from "lucide-react";
 
 type InputSelectProps = {
     labelText: string;
-    options: string[];
+    options: {[key: string]: string};
 }
 
 export const InputSelect = ({ labelText, options }: InputSelectProps) => {
     const [open, setOpen] = useState(false);
-    const [selected, setSelected] = useState<string>("");
+    const [selected, setSelected] = useState<string | undefined>(undefined);
     const ref = useRef<HTMLDivElement | null>(null);
     const id = useId();
 
@@ -36,24 +36,24 @@ export const InputSelect = ({ labelText, options }: InputSelectProps) => {
                    focus:outline-none focus:ring-2 focus:ring-blue-500"
             >
         <span className={selected ? "text-black" : "text-gray-400"}>
-          {selected || "Escolha uma opção"}
+          {selected ? options[selected] : "Escolha uma opção"}
         </span>
                 <ChevronDown size={18} />
             </button>
 
             {open && (
                 <div className="border border-gray-200 rounded-lg shadow-md bg-white mt-1">
-                    {options.map((option) => (
+                    {Object.entries(options).map(([key, value]) => (
                         <div
-                            key={option}
+                            key={key + id}
                             onClick={() => {
-                                setSelected(option);
+                                setSelected(key);
                                 setOpen(false);
                             }}
                             className="px-3 py-2 flex justify-between items-center hover:bg-gray-100 cursor-pointer"
                         >
-                            {option}
-                            {selected === option && <Check size={16} />}
+                            {value}
+                            {selected === value && <Check size={16} />}
                         </div>
                     ))}
                 </div>

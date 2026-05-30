@@ -1,14 +1,13 @@
-import { Login } from "./components/access/Login";
+import { Routes, Route } from "react-router-dom";
+import {SingIn} from "./pages/SingIn";
+import {SingUp} from "./pages/SingUp";
 
 function App() {
     return (
-        <div
-            className={
-                "flex flex-center justify-center h-screen py-10 bg-white"
-            }
-        >
-            <Login />
-        </div>
+        <Routes>
+            <Route path="/" element={<SingIn />} />
+            <Route path={"/sing-up"} element={<SingUp />} />
+        </Routes>
     );
 }
 
