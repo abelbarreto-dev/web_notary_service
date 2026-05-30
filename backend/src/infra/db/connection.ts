@@ -1,6 +1,6 @@
 import dotenv from "dotenv";
 import { PrismaPg } from "@prisma/adapter-pg";
-import { PrismaClient } from "../../prisma/client/client";
+import { PrismaClient } from "../../../prisma/client/client";
 
 let connected = false;
 dotenv.config({ path: ".env" });

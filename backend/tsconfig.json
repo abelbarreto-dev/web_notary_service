@@ -51,6 +51,7 @@
       "@infra/*": ["./src/infra/*"],
       "@repositories/*": ["./src/repositories/*"],
       "@services/*": ["./src/services/*"],
+      "@middleware/*": ["./src/middlewares/*"],
       "@test/cases/*": ["./test/cases/*"],
       "@test/infra/*": ["./test/infra/*"],
       "@test/mocks/*": ["./test/mocks/*"]

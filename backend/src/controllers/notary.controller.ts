@@ -1,6 +1,6 @@
 import { NotaryService } from "@services/notary.service";
 import { PrismaClient } from "../../prisma/client/client";
-import { NotaryId, NotaryInput } from "@infra/notary.models";
+import { NotaryId, NotaryInput } from "@infra/models/notary.models";
 import { notaryResponseFactory } from "../utils/factories/notary.response.factory";
 
 export class NotaryController {

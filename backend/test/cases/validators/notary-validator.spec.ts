@@ -5,9 +5,9 @@ import {
     validateNotaryCreateOrUpdate,
     validateNotaryId,
 } from "../../../src/utils/validators/notary.validator";
-import { NotaryId } from "@infra/notary.models";
+import { NotaryId } from "@infra/models/notary.models";
 import { makeNotaryMocked } from "@test/mocks/notary.mocked";
-import { NotaryStatus, NotaryType } from "@infra/enums";
+import { NotaryStatus, NotaryType } from "@infra/enums/enums";
 import {
     generateCPF,
     generateInvalidCPF,

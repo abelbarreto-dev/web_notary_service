@@ -1,5 +1,5 @@
 import Chance from "chance";
-import { regex } from "@infra/regex.context";
+import { regex } from "@infra/contexts/regex.context";
 
 const chance = new Chance();
 

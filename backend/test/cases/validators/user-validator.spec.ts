@@ -8,9 +8,9 @@ import {
 } from "../../../src/utils/validators/user.validator";
 import { UserException } from "@exception/user.exception";
 import { uuidMocked } from "@test/mocks/uuid.mocked";
-import { UserId } from "@infra/user.models";
+import { UserId } from "@infra/models/user.models";
 import { makeUserMocked } from "@test/mocks/user.mocked";
-import { UserRole } from "@infra/enums";
+import { UserRole } from "@infra/enums/enums";
 
 beforeAll(() => startTesting());
 

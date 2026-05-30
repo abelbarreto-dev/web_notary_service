@@ -1,6 +1,6 @@
 import { User as UserDB } from "../../../prisma/client/client";
-import { User } from "@infra/user.models";
-import { UserRole } from "@infra/enums";
+import { User } from "@infra/models/user.models";
+import { UserRole } from "@infra/enums/enums";
 
 export async function userResponseFactory(userDB: UserDB): Promise<User> {
     const profile: UserRole = userDB.profile as UserRole;

@@ -1,6 +1,6 @@
 import { UserService } from "@services/user.service";
 import { PrismaClient } from "../../prisma/client/client";
-import { User, UserId, UserInput, UserLogin } from "@infra/user.models";
+import { User, UserId, UserInput, UserLogin } from "@infra/models/user.models";
 import { userResponseFactory } from "../utils/factories/user.response.factory";
 
 export class UserController {

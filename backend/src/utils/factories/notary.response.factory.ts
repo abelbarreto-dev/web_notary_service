@@ -1,6 +1,6 @@
 import { Notary as NotaryDB } from "../../../prisma/client/client";
-import { Notary } from "@infra/notary.models";
-import { NotaryStatus, NotaryType } from "@infra/enums";
+import { Notary } from "@infra/models/notary.models";
+import { NotaryStatus, NotaryType } from "@infra/enums/enums";
 
 export async function notaryResponseFactory(
     notaryDB: NotaryDB,

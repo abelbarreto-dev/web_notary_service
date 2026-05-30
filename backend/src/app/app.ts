@@ -1,5 +1,5 @@
 import { startServerGraphQL } from "@graphql-pkg/server";
-import { prismaClient } from "@infra/connection";
+import { prismaClient } from "@infra/db/connection";
 
 const prisma = prismaClient();
 

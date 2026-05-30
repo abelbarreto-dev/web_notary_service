@@ -1,10 +1,10 @@
-import { UserRole } from "@infra/enums";
+import { UserRole } from "@infra/enums/enums";
 import { UserException } from "@exception/user.exception";
-import { ExceptionType } from "@infra/exception.context";
+import { ExceptionType } from "@infra/contexts/exception.context";
 import { validatorEmail } from "../general/email.util";
-import { regex } from "@infra/regex.context";
+import { regex } from "@infra/contexts/regex.context";
 import { comparePasswords } from "../general/password.util";
-import { UserId } from "@infra/user.models";
+import { UserId } from "@infra/models/user.models";
 import { validateUUID } from "../general/uuid.util";
 
 type UserValidator = {

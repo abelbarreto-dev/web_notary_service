@@ -1,6 +1,6 @@
 import { UserRepository } from "@repositories/user.repository";
 import { PrismaClient, User } from "../../prisma/client/client";
-import { UserId, UserInput, UserLogin } from "@infra/user.models";
+import { UserId, UserInput, UserLogin } from "@infra/models/user.models";
 import {
     validateUserCreateOrUpdate,
     validateUserId,

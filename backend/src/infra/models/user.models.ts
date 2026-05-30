@@ -1,4 +1,4 @@
-import { UserRole } from "./enums";
+import { UserRole } from "../enums/enums";
 
 export interface UserInput {
     name: string;

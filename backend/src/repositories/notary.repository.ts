@@ -1,5 +1,5 @@
 import { Notary, PrismaClient } from "../../prisma/client/client";
-import { NotaryId, NotaryInput } from "@infra/notary.models";
+import { NotaryId, NotaryInput } from "@infra/models/notary.models";
 import { DatabaseException } from "@exception/database.exception";
 import { NotaryException } from "@exception/notary.exception";
 

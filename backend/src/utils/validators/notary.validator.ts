@@ -1,8 +1,8 @@
-import { NotaryStatus, NotaryType } from "@infra/enums";
-import { ExceptionType } from "@infra/exception.context";
-import { regex } from "@infra/regex.context";
+import { NotaryStatus, NotaryType } from "@infra/enums/enums";
+import { ExceptionType } from "@infra/contexts/exception.context";
+import { regex } from "@infra/contexts/regex.context";
 import { NotaryException } from "@exception/notary.exception";
-import { NotaryId } from "@infra/notary.models";
+import { NotaryId } from "@infra/models/notary.models";
 import { validateUUID } from "../general/uuid.util";
 import { UserException } from "@exception/user.exception";
 import { validatorCPF } from "../general/cpf.util";

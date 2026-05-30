@@ -1,4 +1,4 @@
-import { NotaryStatus, NotaryType } from "./enums";
+import { NotaryStatus, NotaryType } from "../enums/enums";
 
 export interface NotaryInput {
     id?: string;

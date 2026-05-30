@@ -1,4 +1,4 @@
-import { regex } from "@infra/regex.context";
+import { regex } from "@infra/contexts/regex.context";
 
 export function validateUUID(uuid: string): boolean {
     return regex.uuid(uuid);

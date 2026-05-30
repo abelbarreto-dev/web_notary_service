@@ -1,5 +1,5 @@
 import { PrismaClient, User } from "../../prisma/client/client";
-import { UserId, UserInput, UserLogin } from "@infra/user.models";
+import { UserId, UserInput, UserLogin } from "@infra/models/user.models";
 import { DatabaseException } from "@exception/database.exception";
 import { UserException } from "@exception/user.exception";
 

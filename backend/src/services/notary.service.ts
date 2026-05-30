@@ -1,6 +1,6 @@
 import { NotaryRepository } from "@repositories/notary.repository";
 import { Notary, PrismaClient } from "../../prisma/client/client";
-import { NotaryId, NotaryInput } from "@infra/notary.models";
+import { NotaryId, NotaryInput } from "@infra/models/notary.models";
 import {
     validateNotaryCreateOrUpdate,
     validateNotaryId,

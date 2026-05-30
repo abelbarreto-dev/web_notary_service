@@ -1,4 +1,7 @@
-import { ExceptionContext, ExceptionType } from "@infra/exception.context";
+import {
+    ExceptionContext,
+    ExceptionType,
+} from "@infra/contexts/exception.context";
 
 export class NotaryException extends ExceptionContext {
     constructor(props: ExceptionType) {
