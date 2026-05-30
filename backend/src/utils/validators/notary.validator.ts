@@ -6,12 +6,14 @@ import { NotaryId } from "@infra/models/notary.models";
 import { validateUUID } from "../general/uuid.util";
 import { UserException } from "@exception/user.exception";
 import { validatorCPF } from "../general/cpf.util";
+import { validateUserId } from "./user.validator";
 
 type NotaryValidator = {
     applicant?: string;
     cpf?: string;
     description?: string;
     remarks?: string;
+    userId?: string;
     notaryStatus?: NotaryStatus;
     notaryType?: NotaryType;
 };
@@ -101,6 +103,7 @@ export async function validateNotaryCreateOrUpdate(notary?: NotaryValidator) {
     remarksTesting(notary?.remarks);
     notaryStatusTesting(notary?.notaryStatus);
     notaryTypeTesting(notary?.notaryType);
+    await validateUserId({ id: notary?.userId ?? "" });
 }
 
 export async function validateNotaryId(notaryId: NotaryId) {

@@ -1,5 +1,6 @@
 import Chance from "chance";
 import { generateCPF } from "../../src/utils/general/cpf.util";
+import { uuidMocked } from "@test/mocks/uuid.mocked";
 
 const chance = new Chance();
 
@@ -19,6 +20,7 @@ export type NotaryMocked = {
     description: string;
     requestDate: Date;
     remarks?: string | null;
+    userId: string;
     notaryStatus: NotaryStatus;
     notaryType: NotaryType;
     createdAt?: Date;
@@ -32,6 +34,7 @@ export function makeNotaryMocked(override: {}): NotaryMocked {
         description: chance.paragraph({ sentences: 10 }).substring(0, 254),
         requestDate: new Date(),
         remarks: chance.bool() ? chance.sentence({ words: 10 }) : undefined,
+        userId: uuidMocked(),
         notaryStatus: chance.pickone<NotaryStatus>([
             "PENDING",
             "IN_PROGRESS",

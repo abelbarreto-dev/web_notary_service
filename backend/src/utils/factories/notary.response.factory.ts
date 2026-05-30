@@ -18,6 +18,7 @@ export async function notaryResponseFactory(
         cpf: notaryDB.cpf,
         description: notaryDB.description,
         remarks: notaryDB?.remarks ?? undefined,
+        userId: notaryDB.userId,
         requestDate,
         notaryStatus,
         notaryType,
