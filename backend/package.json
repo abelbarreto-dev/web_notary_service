@@ -26,9 +26,12 @@
     "prisma:test": "dotenv -e .env.test -- prisma migrate deploy",
     "prisma:test:reset": "dotenv -e .env.test -- prisma migrate reset --force",
     "format": "prettier --write \"{src,test}/**/*.{ts,tsx,js,jsx,json,css,md}\"",
-    "format:check": "prettier --check \"{src,test}/**/*.{ts,tsx,js,jsx,json,css,md}\""
+    "format:check": "prettier --check \"{src,test}/**/*.{ts,tsx,js,jsx,json,css,md}\"",
+    "lint": "eslint src/**/*.ts --fix",
+    "lint:format": "npm run lint && npm run format"
   },
   "devDependencies": {
+    "@eslint/js": "^10.0.1",
     "@jest/globals": "^30.4.1",
     "@prisma/client": "^7.8.0",
     "@prisma/dev": "^0.24.8",
@@ -41,12 +44,14 @@
     "chance": "^1.1.13",
     "dotenv-cli": "^11.0.0",
     "esbuild-register": "^3.6.0",
+    "eslint-plugin-unused-imports": "^4.4.1",
     "jest": "^30.4.2",
     "prettier": "^3.8.3",
     "prisma": "^7.8.0",
     "ts-jest": "^29.4.11",
     "ts-node": "^10.9.2",
-    "tsconfig-paths": "^4.2.0"
+    "tsconfig-paths": "^4.2.0",
+    "typescript-eslint": "^8.60.0"
   },
   "dependencies": {
     "@graphql-tools/load-files": "^7.0.1",

@@ -1,7 +1,4 @@
-import {
-    ExceptionContext,
-    ExceptionType,
-} from "@infra/contexts/exception.context";
+import { ExceptionContext } from "@infra/contexts/exception.context";
 
 export class DatabaseException extends ExceptionContext {
     constructor(stack: string) {
